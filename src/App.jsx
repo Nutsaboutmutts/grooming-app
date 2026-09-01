@@ -141,7 +141,7 @@ const RATING = { average: "5.0", count: "200+" };
 const FAQS = [
   { q: "How often should my dog be groomed?", a: "Most pups do best every 4–8 weeks depending on their coat. Doodles, poodles, and other curly coats need the shorter end of that range to stay mat-free. We're happy to recommend a schedule for your dog at their first visit." },
   { q: "How long does a groom take?", a: "A bath usually takes 1–2 hours, a trim-up 2–3 hours, and a full body cut 2¼–3¼ hours, depending on your pup's size, coat, and how they feel about the blow dryer. We'll text you updates the whole way, and you'll get a message the moment they're ready for pickup." },
-  { q: "Why do prices vary?", a: "Because every dog is different! The prices on our site are starting points by size — your pup's coat condition and length, behavior, and any special needs can change the final price. We'll always go over the exact price with you before we start, so there are never any surprises." },
+  { q: "Why do prices say \"starting at\"?", a: "Because every dog is different! The prices on our site are starting points by size — your pup's coat condition and length, behavior, any special needs, and any add-ons you choose can change the final price. We'll always go over the exact price with you before we start, so there are never any surprises." },
   { q: "Do you take walk-ins?", a: "Yes — three services are always walk-in, no appointment needed: nail trim or grinding ($15), nails plus ear cleaning ($20), and anal gland expression ($15). Baths and grooms are by appointment so every pup gets our full attention. Book online or give us a call." },
   { q: "My dog is nervous or has never been groomed. Can you help?", a: "Absolutely — gentle handling is our specialty, and nervous pups and rescues are some of our favorite clients. Tell us in the booking notes and we'll take it slow, with lots of breaks and treats. For puppies, our Puppy's First Pamper is the perfect low-stress introduction." },
   { q: "What if my dog's coat is matted?", a: "We'll always do what's kindest for your dog. Light matting can often be worked out with our dematting and extra brushing add-on ($20); heavier coats may need our excessive matting service ($25) or a shorter, comfortable cut. We'll always talk it through with you before we do anything." },
@@ -337,7 +337,8 @@ function Pricing({ onBook }) {
               </ul>
               <div className="price-card-foot">
                 <div>
-                  <span className="price-amount">{svc.from && <small className="price-from">from </small>}${svc.price[size]}</span>
+                  <span className="price-starting">Starting at</span>
+                  <span className="price-amount">${svc.price[size]}</span>
                   <span className="price-time">⏱ {svc.time}</span>
                 </div>
                 <button className="btn btn-primary btn-sm" onClick={() => onBook(size, svc.id)}>Book</button>

@@ -29,7 +29,7 @@
   #nam-pricing-{{ section.id }} .nam-card-foot { display: flex; align-items: center; justify-content: space-between; border-top: 1px dashed var(--nam-line); padding-top: 14px; }
   #nam-pricing-{{ section.id }} .nam-price { font-size: 28px; font-weight: 800; color: var(--nam-teal-dark); display: block; line-height: 1.1; }
   #nam-pricing-{{ section.id }} .nam-time { font-size: 12px; color: var(--nam-ink-soft); }
-  #nam-pricing-{{ section.id }} .nam-from { font-size: 13px; font-weight: 600; color: var(--nam-ink-soft); }
+  #nam-pricing-{{ section.id }} .nam-starting { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--nam-ink-soft); margin-bottom: 2px; }
   #nam-pricing-{{ section.id }} .nam-book-btn { background: var(--nam-coral); color: #fff; border: none; border-radius: 999px; padding: 10px 22px; font-size: 14px; font-weight: 700; text-decoration: none; display: inline-block; }
   #nam-pricing-{{ section.id }} .nam-book-btn:hover { filter: brightness(.95); }
   #nam-pricing-{{ section.id }} .nam-addons { margin-top: 40px; background: #fff; border: 1px solid var(--nam-line); border-radius: 20px; padding: 26px; }
@@ -81,7 +81,7 @@
             </ul>
             <div class="nam-card-foot">
               <div>
-                {% if block.settings.from_price %}<span class="nam-from">from </span>{% endif %}<span class="nam-price" data-small="{{ block.settings.price_small }}" data-medium="{{ block.settings.price_medium }}" data-large="{{ block.settings.price_large }}" data-xl="{{ block.settings.price_xl }}">${{ block.settings.price_medium }}</span>
+                <span class="nam-starting">Starting at</span><span class="nam-price" data-small="{{ block.settings.price_small }}" data-medium="{{ block.settings.price_medium }}" data-large="{{ block.settings.price_large }}" data-xl="{{ block.settings.price_xl }}">${{ block.settings.price_medium }}</span>
                 {% if block.settings.duration != blank %}<span class="nam-time">⏱ {{ block.settings.duration }}</span>{% endif %}
               </div>
               {% if section.settings.book_link != blank %}
@@ -201,8 +201,7 @@
         { "type": "number", "id": "price_large", "label": "Price — Large ($)", "default": 175 },
         { "type": "number", "id": "price_xl", "label": "Price — Extra Large ($)", "default": 240 },
         { "type": "text", "id": "duration", "label": "How long it takes", "default": "2 – 3 hours" },
-        { "type": "checkbox", "id": "popular", "label": "Show 'Most Popular' badge", "default": false },
-        { "type": "checkbox", "id": "from_price", "label": "Show 'from' before the price", "default": false }
+        { "type": "checkbox", "id": "popular", "label": "Show 'Most Popular' badge", "default": false }
       ]
     },
     {
@@ -226,9 +225,9 @@
     {
       "name": "NAM Price List",
       "blocks": [
-        { "type": "service", "settings": { "icon": "✂️", "title": "Full Body Cut", "description": "The Full Mutt Makeover! Bath, blow-dry, full haircut & style, nail trim, and ear cleaning. Short cuts start at the price shown — long cuts and doodles & poodles run a little more.", "includes": "Warm bath & massage\nBlow-dry & brush-out\nFull haircut & styling\nNail trim\nEar cleaning\nBow or bandana", "price_small": 85, "price_medium": 100, "price_large": 135, "price_xl": 170, "duration": "2¼ – 3¼ hours", "popular": true, "from_price": true } },
+        { "type": "service", "settings": { "icon": "✂️", "title": "Full Body Cut", "description": "The Full Mutt Makeover! Bath, blow-dry, full haircut & style, nail trim, and ear cleaning. Short cuts start at the price shown — long cuts and doodles & poodles run a little more.", "includes": "Warm bath & massage\nBlow-dry & brush-out\nFull haircut & styling\nNail trim\nEar cleaning\nBow or bandana", "price_small": 85, "price_medium": 100, "price_large": 135, "price_xl": 170, "duration": "2¼ – 3¼ hours", "popular": true } },
         { "type": "service", "settings": { "icon": "🐾", "title": "Trim-Up", "description": "Bath plus a tidy trim — face, feet, and sanitary — without the full haircut. Perfect between full grooms.", "includes": "Warm bath & massage\nBlow-dry & brush-out\nFace, feet & sanitary trim\nNail trim\nEar cleaning", "price_small": 70, "price_medium": 85, "price_large": 115, "price_xl": 145, "duration": "2 – 3 hours" } },
-        { "type": "service", "settings": { "icon": "🛁", "title": "Bath Only — No Cut", "description": "A squeaky-clean bath, blow-dry, and full brush-out — no haircut. Short-haired pups start at the price shown; long or double coats and de-shedding baths run a little more.", "includes": "Warm bath & massage\nBlow-dry & brush-out\nCologne spritz\nBandana", "price_small": 40, "price_medium": 55, "price_large": 75, "price_xl": 95, "duration": "1¼ – 2¾ hours", "from_price": true } },
+        { "type": "service", "settings": { "icon": "🛁", "title": "Bath Only — No Cut", "description": "A squeaky-clean bath, blow-dry, and full brush-out — no haircut. Short-haired pups start at the price shown; long or double coats and de-shedding baths run a little more.", "includes": "Warm bath & massage\nBlow-dry & brush-out\nCologne spritz\nBandana", "price_small": 40, "price_medium": 55, "price_large": 75, "price_xl": 95, "duration": "1¼ – 2¾ hours" } },
         { "type": "service", "settings": { "icon": "🐶", "title": "Puppy Trim", "description": "A gentle, patient first trim for puppies 5 months & under — short, sweet, and full of treats. Small breeds $40, large breeds $50.", "includes": "Gentle intro bath\nLight trim\nNail trim\nLots of treats & praise", "price_small": 40, "price_medium": 40, "price_large": 50, "price_xl": 50, "duration": "2 hours" } },
         { "type": "addon", "settings": { "name": "💅 Nail Grinding", "price": 15 } },
         { "type": "addon", "settings": { "name": "🦷 Tooth Brushing", "price": 10 } },

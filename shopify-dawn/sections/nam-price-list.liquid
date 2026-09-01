@@ -36,7 +36,8 @@
   #nam-pricing-{{ section.id }} .nam-addons-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; }
   #nam-pricing-{{ section.id }} .nam-addon { display: flex; justify-content: space-between; background: #f4ede2; border-radius: 12px; padding: 10px 16px; font-size: 14px; }
   #nam-pricing-{{ section.id }} .nam-addon strong { color: var(--nam-teal-dark); }
-  #nam-pricing-{{ section.id }} .nam-note { font-size: 13px; color: var(--nam-ink-soft); margin: 14px 0 0; }
+  #nam-pricing-{{ section.id }} .nam-walkin { margin: 16px 0 0; background: var(--nam-teal-soft); border: 1px solid #bfe0da; border-radius: 12px; padding: 11px 16px; font-size: 14px; font-weight: 700; color: var(--nam-teal-dark); }
+  #nam-pricing-{{ section.id }} .nam-note { font-size: 13px; color: var(--nam-ink-soft); margin: 10px 0 0; }
   @media (max-width: 749px) { #nam-pricing-{{ section.id }} .nam-size-toggle { grid-template-columns: 1fr 1fr; } }
 </style>
 
@@ -106,6 +107,7 @@
             {% endif %}
           {% endfor %}
         </div>
+        {% if section.settings.walkin_note != blank %}<p class="nam-walkin">{{ section.settings.walkin_note }}</p>{% endif %}
         {% if section.settings.addons_note != blank %}<p class="nam-note">{{ section.settings.addons_note }}</p>{% endif %}
       </div>
     {% endif %}
@@ -159,6 +161,7 @@
     { "type": "text", "id": "range_xl", "label": "Extra Large weight range", "default": "Over 90 lbs" },
     { "type": "header", "content": "Add-ons" },
     { "type": "text", "id": "addons_heading", "label": "Add-ons heading", "default": "Pawsome Add-Ons" },
+    { "type": "text", "id": "walkin_note", "label": "Walk-in note", "default": "💅 Nail trims are always walk-in — no appointment needed, just stop by!" },
     { "type": "textarea", "id": "addons_note", "label": "Add-ons note", "default": "Severely matted coats, special-handling pups, or extra-long coats may add to the price — we'll always confirm with you first." }
   ],
   "blocks": [

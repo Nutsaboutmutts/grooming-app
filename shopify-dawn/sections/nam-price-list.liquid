@@ -111,6 +111,25 @@
         {% if section.settings.addons_note != blank %}<p class="nam-note">{{ section.settings.addons_note }}</p>{% endif %}
       </div>
     {% endif %}
+
+    {% assign has_cats = false %}
+    {% for block in section.blocks %}{% if block.type == 'cat' %}{% assign has_cats = true %}{% endif %}{% endfor %}
+    {% if has_cats %}
+      <div class="nam-addons nam-cats">
+        <h3>{{ section.settings.cats_heading }}</h3>
+        <div class="nam-addons-grid">
+          {% for block in section.blocks %}
+            {% if block.type == 'cat' %}
+              <div class="nam-addon" {{ block.shopify_attributes }}>
+                <span>{{ block.settings.name }}</span>
+                <strong>{{ block.settings.price }}</strong>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% if section.settings.cats_note != blank %}<p class="nam-note">{{ section.settings.cats_note }}</p>{% endif %}
+      </div>
+    {% endif %}
   </div>
 </div>
 
@@ -162,7 +181,10 @@
     { "type": "header", "content": "Add-ons" },
     { "type": "text", "id": "addons_heading", "label": "Add-ons heading", "default": "Pawsome Add-Ons" },
     { "type": "text", "id": "walkin_note", "label": "Walk-in note", "default": "💅 Walk-in nail trims — just $15, no appointment needed. Stop by anytime!" },
-    { "type": "textarea", "id": "addons_note", "label": "Add-ons note", "default": "Severely matted coats, special-handling pups, or extra-long coats may add to the price — we'll always confirm with you first." }
+    { "type": "textarea", "id": "addons_note", "label": "Add-ons note", "default": "Severely matted coats, special-handling pups, or extra-long coats may add to the price — we'll always confirm with you first." },
+    { "type": "header", "content": "Cats" },
+    { "type": "text", "id": "cats_heading", "label": "Cats heading", "default": "🐱 We groom cats too!" },
+    { "type": "textarea", "id": "cats_note", "label": "Cats note", "default": "Cat appointments are scheduled by phone — give us a call." }
   ],
   "blocks": [
     {
@@ -185,8 +207,16 @@
       "type": "addon",
       "name": "Add-on",
       "settings": [
-        { "type": "text", "id": "name", "label": "Add-on name", "default": "💅 Nail Grind" },
-        { "type": "number", "id": "price", "label": "Price ($)", "default": 12 }
+        { "type": "text", "id": "name", "label": "Add-on name", "default": "💅 Nail Grinding" },
+        { "type": "number", "id": "price", "label": "Price ($)", "default": 15 }
+      ]
+    },
+    {
+      "type": "cat",
+      "name": "Cat service",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Service name", "default": "Cat Nail Trim" },
+        { "type": "text", "id": "price", "label": "Price (e.g. $15 or Call for quote)", "default": "$15" }
       ]
     }
   ],
@@ -198,11 +228,19 @@
         { "type": "service", "settings": { "icon": "🛁", "title": "Splish Splash Bath & Brush", "description": "A refreshing scrub for pups who just need to freshen up. Bath, blow-dry, full brush-out, and a spritz of cologne.", "includes": "Warm bath & massage\nBlow-dry & brush-out\nCologne spritz\nBandana", "price_small": 35, "price_medium": 45, "price_large": 55, "price_xl": 70, "duration": "1 – 1.5 hours" } },
         { "type": "service", "settings": { "icon": "🐶", "title": "Puppy's First Pamper", "description": "A gentle, patient introduction to grooming for pups under 6 months. Short, sweet, and full of treats.", "includes": "Gentle intro bath\nLight face & feet trim\nNail trim\nLots of treats & praise", "price_small": 45, "price_medium": 45, "price_large": 55, "price_xl": 55, "duration": "45 min – 1 hour" } },
         { "type": "service", "settings": { "icon": "🐾", "title": "Quick Tidy-Up", "description": "In between grooms? Face, feet, and sanitary trim plus a nail trim to keep your pup looking sharp.", "includes": "Face & feet trim\nSanitary trim\nNail trim", "price_small": 30, "price_medium": 35, "price_large": 40, "price_xl": 45, "duration": "30 – 45 min" } },
-        { "type": "addon", "settings": { "name": "💅 Nail Grind (smooth finish)", "price": 15 } },
-        { "type": "addon", "settings": { "name": "🦷 Teeth Brushing", "price": 10 } },
-        { "type": "addon", "settings": { "name": "💨 De-Shedding Treatment", "price": 15 } },
-        { "type": "addon", "settings": { "name": "🫐 Blueberry Facial", "price": 10 } },
-        { "type": "addon", "settings": { "name": "🐾 Paw Balm Treatment", "price": 8 } }
+        { "type": "addon", "settings": { "name": "💅 Nail Grinding", "price": 15 } },
+        { "type": "addon", "settings": { "name": "🦷 Tooth Brushing", "price": 10 } },
+        { "type": "addon", "settings": { "name": "🧴 Specialty Shampoo", "price": 8 } },
+        { "type": "addon", "settings": { "name": "✨ Spa Package", "price": 20 } },
+        { "type": "addon", "settings": { "name": "✨ Spa Package + Nail Grinding", "price": 25 } },
+        { "type": "addon", "settings": { "name": "💨 De-Shedding (XSmall–Medium)", "price": 15 } },
+        { "type": "addon", "settings": { "name": "💨 De-Shedding (Large & Up)", "price": 25 } },
+        { "type": "addon", "settings": { "name": "🧼 Anal Gland Expression", "price": 15 } },
+        { "type": "addon", "settings": { "name": "⚡ Express Service (book ahead)", "price": 20 } },
+        { "type": "cat", "settings": { "name": "Cat Bath — Short-haired (2 hrs)", "price": "$65" } },
+        { "type": "cat", "settings": { "name": "Cat Bath — Long-haired (2 hrs)", "price": "$80" } },
+        { "type": "cat", "settings": { "name": "Cat Nail Trim (15 min)", "price": "$15" } },
+        { "type": "cat", "settings": { "name": "Cat Shave", "price": "Call for quote" } }
       ]
     }
   ]

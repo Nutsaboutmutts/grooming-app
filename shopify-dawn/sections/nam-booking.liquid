@@ -53,6 +53,7 @@
   #nam-book-{{ section.id }} .nam-success { text-align: center; padding: 30px 10px; }
   #nam-book-{{ section.id }} .nam-success-icon { font-size: 60px; }
   #nam-book-{{ section.id }} .nam-errors { background: #fee2e2; border: 1px solid #ef4444; border-radius: 12px; padding: 12px 18px; margin-bottom: 18px; color: #991b1b; font-size: 14px; }
+  #nam-book-{{ section.id }} .nam-cat-note { margin: 18px 0 0; text-align: center; font-size: 14px; color: var(--nam-ink-soft); }
   @media (max-width: 749px) { #nam-book-{{ section.id }} .nam-addon-grid, #nam-book-{{ section.id }} .nam-fields { grid-template-columns: 1fr; } }
 </style>
 
@@ -188,6 +189,8 @@
           </div>
         </div>
 
+        {% if section.settings.cat_note != blank %}<p class="nam-cat-note">{{ section.settings.cat_note }}</p>{% endif %}
+
         <div class="nam-summary" hidden data-summary>
           <span data-summary-text></span>
           <span>Est. total: <strong data-summary-total></strong></span>
@@ -300,6 +303,7 @@
     { "type": "textarea", "id": "success_text", "label": "Success message", "default": "Thanks! We've got your request and we'll call or text you shortly to confirm your pup's appointment time. 🐾" },
     { "type": "text", "id": "days", "label": "Bookable days (comma separated)", "default": "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday" },
     { "type": "text", "id": "times", "label": "Time windows (comma separated)", "default": "Morning (8–11 AM), Midday (11 AM–2 PM), Afternoon (2–5 PM)" },
+    { "type": "text", "id": "cat_note", "label": "Cat note (shown under the form)", "default": "🐱 Booking for a cat? Cat appointments are scheduled by phone — give us a call." },
     { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#1F7A70" },
     { "type": "color", "id": "button_color", "label": "Button color", "default": "#F4845F" },
     { "type": "header", "content": "Dog sizes" },
@@ -347,11 +351,15 @@
         { "type": "service", "settings": { "icon": "🛁", "title": "Bath & Brush", "subtitle": "Splish Splash", "price_small": 35, "price_medium": 45, "price_large": 55, "price_xl": 70 } },
         { "type": "service", "settings": { "icon": "🐶", "title": "Puppy Intro", "subtitle": "Puppy's First Pamper", "price_small": 45, "price_medium": 45, "price_large": 55, "price_xl": 55 } },
         { "type": "service", "settings": { "icon": "🐾", "title": "Tidy-Up", "subtitle": "Quick Tidy-Up", "price_small": 30, "price_medium": 35, "price_large": 40, "price_xl": 45 } },
-        { "type": "addon", "settings": { "name": "💅 Nail Grind (smooth finish)", "price": 15 } },
-        { "type": "addon", "settings": { "name": "🦷 Teeth Brushing", "price": 10 } },
-        { "type": "addon", "settings": { "name": "💨 De-Shedding Treatment", "price": 15 } },
-        { "type": "addon", "settings": { "name": "🫐 Blueberry Facial", "price": 10 } },
-        { "type": "addon", "settings": { "name": "🐾 Paw Balm Treatment", "price": 8 } }
+        { "type": "addon", "settings": { "name": "💅 Nail Grinding", "price": 15 } },
+        { "type": "addon", "settings": { "name": "🦷 Tooth Brushing", "price": 10 } },
+        { "type": "addon", "settings": { "name": "🧴 Specialty Shampoo", "price": 8 } },
+        { "type": "addon", "settings": { "name": "✨ Spa Package", "price": 20 } },
+        { "type": "addon", "settings": { "name": "✨ Spa Package + Nail Grinding", "price": 25 } },
+        { "type": "addon", "settings": { "name": "💨 De-Shedding (XSmall–Medium)", "price": 15 } },
+        { "type": "addon", "settings": { "name": "💨 De-Shedding (Large & Up)", "price": 25 } },
+        { "type": "addon", "settings": { "name": "🧼 Anal Gland Expression", "price": 15 } },
+        { "type": "addon", "settings": { "name": "⚡ Express Service (book ahead)", "price": 20 } }
       ]
     }
   ]

@@ -124,7 +124,7 @@ const FAQS = [
   { q: "My dog is nervous or has never been groomed. Can you help?", a: "Absolutely — gentle handling is our specialty, and nervous pups and rescues are some of our favorite clients. Tell us in the booking notes and we'll take it slow, with lots of breaks and treats. For puppies, our Puppy's First Pamper is the perfect low-stress introduction." },
   { q: "What if my dog's coat is matted?", a: "We'll always do what's kindest for your dog. Light matting can often be brushed out; heavier matting may mean a shorter, comfortable cut and a little extra time, which can add to the price. We'll always talk it through with you before we do anything." },
   { q: "What do I need to bring?", a: "Just your pup on a leash (or in a carrier for the littles) and proof of current rabies vaccination for their first visit. We'll handle the rest — including the good-smelling stuff." },
-  { q: "How do I pay, and can I tip my groomer?", a: "We accept cards and cash at pickup. Tips are never expected but always appreciated — our groomers keep 100% of them." },
+  { q: "How do I pay, and can I tip my groomer?", a: "We accept cash and card at pickup. Tips are never expected but always appreciated — they're shared between your pup's groomer and bather, so the whole team that pampered them feels the love." },
 ];
 
 // Awards & bragging rights — shown in the awards banner under the hero.

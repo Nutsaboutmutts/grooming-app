@@ -16,7 +16,35 @@ in Shopify's theme editor — **no code needed after setup**.
 | **NAM Sticky Book Button** | A floating "🐾 Book Now" button that follows customers as they scroll |
 | **NAM Follow Us** | Big Facebook / Instagram / TikTok / Amazon storefront buttons — great under the reviews |
 
-## Install (one time, about 10 minutes)
+## ⚡ Easiest install: upload the ready-made theme (recommended)
+
+This folder includes **`nuts-about-mutts-dawn-theme.zip`** — the official
+Shopify Dawn theme (v16.0.0) with every NAM section already inside and the
+homepage already assembled in the right order, with your prices, reviews,
+awards, FAQ, and social links pre-filled.
+
+1. In your Shopify admin, go to **Online Store → Themes**.
+2. Scroll to **Theme library → Add theme → Upload zip file** and upload
+   `nuts-about-mutts-dawn-theme.zip`. It appears as
+   **"Dawn — Nuts About Mutts"** in your library (your live theme is untouched).
+3. Go to **Online Store → Pages → Add page**. Title it exactly
+   **Book an Appointment**. On the right, under **Theme template**, choose
+   **book**. Save. (This makes every "Book" button on the homepage work —
+   they all point at this page.)
+4. On the new theme, click **Customize** to preview. Add your hero photo to
+   the Image banner, and fix anything marked as placeholder (phone, address,
+   hours, prices you haven't given yet).
+5. Add **Book an Appointment** to your menu: **Online Store → Navigation →
+   Main menu → Add menu item**, linking to the new page.
+6. When it looks right, click **Publish** on the new theme. Your old theme
+   stays in the library as a backup you can switch back to anytime.
+
+Note: uploading this theme starts fresh from Dawn's defaults — it does not
+carry over colors, logo, or content from your current theme, so re-upload
+your logo under **Customize → Header** and pick your colors in
+**Theme settings**.
+
+## Manual install into your existing theme (about 10 minutes)
 
 1. In your Shopify admin go to **Online Store → Themes**.
 2. **Make a backup first:** on your live theme click **⋯ → Duplicate**.

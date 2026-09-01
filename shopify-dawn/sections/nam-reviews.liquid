@@ -1,0 +1,88 @@
+{% comment %}
+  Nuts About Mutts — Reviews (for the Dawn theme)
+  Paste your real Google / Facebook reviews in as blocks in the theme editor.
+{% endcomment %}
+
+<style>
+  #nam-reviews-{{ section.id }} { --nam-coral: {{ section.settings.accent_color }}; --nam-star: #f5b301; padding: 56px 20px; background: {{ section.settings.background_color }}; color: #fff; }
+  #nam-reviews-{{ section.id }} .nam-inner { max-width: 1120px; margin: 0 auto; }
+  #nam-reviews-{{ section.id }} .nam-eyebrow { display: block; font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #ffcbb5; margin-bottom: 8px; }
+  #nam-reviews-{{ section.id }} h2 { font-size: clamp(28px, 4vw, 40px); margin: 0 0 16px; color: #fff; line-height: 1.15; }
+  #nam-reviews-{{ section.id }} .nam-summary { display: flex; align-items: center; gap: 16px; margin: 0 0 32px; }
+  #nam-reviews-{{ section.id }} .nam-score { font-size: 52px; font-weight: 800; line-height: 1; }
+  #nam-reviews-{{ section.id }} .nam-summary p { margin: 2px 0 0; color: #bfe3dc; font-size: 14px; }
+  #nam-reviews-{{ section.id }} .nam-stars { color: var(--nam-star); letter-spacing: 2px; font-size: 16px; }
+  #nam-reviews-{{ section.id }} .nam-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  #nam-reviews-{{ section.id }} figure { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); border-radius: 20px; padding: 24px 22px; margin: 0; display: flex; flex-direction: column; }
+  #nam-reviews-{{ section.id }} blockquote { margin: 12px 0 18px; font-size: 15px; line-height: 1.65; color: #eef7f5; flex: 1; border: none; padding: 0; }
+  #nam-reviews-{{ section.id }} figcaption { display: flex; align-items: center; gap: 12px; font-size: 14px; }
+  #nam-reviews-{{ section.id }} figcaption small { color: #9ecfc6; }
+  #nam-reviews-{{ section.id }} .nam-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--nam-coral); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 17px; flex-shrink: 0; }
+</style>
+
+<div id="nam-reviews-{{ section.id }}">
+  <div class="nam-inner">
+    {% if section.settings.eyebrow != blank %}<span class="nam-eyebrow">{{ section.settings.eyebrow }}</span>{% endif %}
+    <h2>{{ section.settings.heading }}</h2>
+    <div class="nam-summary">
+      <span class="nam-score">{{ section.settings.average }}</span>
+      <div>
+        <div class="nam-stars" aria-label="{{ section.settings.average }} out of 5 stars">★★★★★</div>
+        <p>{{ section.settings.count_text }}</p>
+      </div>
+    </div>
+    <div class="nam-grid">
+      {% for block in section.blocks %}
+        <figure {{ block.shopify_attributes }}>
+          {% assign full = block.settings.stars %}
+          <div class="nam-stars" aria-label="{{ full }} out of 5 stars">{% for i in (1..5) %}{% if i <= full %}★{% else %}☆{% endif %}{% endfor %}</div>
+          <blockquote>“{{ block.settings.text }}”</blockquote>
+          <figcaption>
+            <span class="nam-avatar">{{ block.settings.pet_name | default: block.settings.reviewer | slice: 0 }}</span>
+            <span><strong>{{ block.settings.reviewer }}</strong>{% if block.settings.pet_name != blank %}<br><small>{{ block.settings.pet_name }}'s human</small>{% endif %}</span>
+          </figcaption>
+        </figure>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "NAM Reviews",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow text", "default": "Wagging tails & rave reviews" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Pup parents love us" },
+    { "type": "text", "id": "average", "label": "Average rating", "default": "5.0" },
+    { "type": "text", "id": "count_text", "label": "Review count text", "default": "200+ five-star reviews" },
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#15594F" },
+    { "type": "color", "id": "accent_color", "label": "Avatar color", "default": "#F4845F" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "text", "id": "reviewer", "label": "Reviewer name", "default": "Sarah M." },
+        { "type": "text", "id": "pet_name", "label": "Pet's name", "default": "Bella" },
+        { "type": "range", "id": "stars", "label": "Stars", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "textarea", "id": "text", "label": "Review text", "default": "Best groom my pup has ever had — she came home looking like a show dog!" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NAM Reviews",
+      "blocks": [
+        { "type": "review", "settings": { "reviewer": "Sarah M.", "pet_name": "Bella", "stars": 5, "text": "Bella comes home from Nuts About Mutts looking like a show dog every single time! The text updates during her groom are the sweetest touch — I always know exactly how she's doing." } },
+        { "type": "review", "settings": { "reviewer": "James T.", "pet_name": "Rocky", "stars": 5, "text": "Rocky is a nervous rescue and this is the ONLY groomer he's ever been happy to walk into. The team is so patient with him. Can't recommend enough!" } },
+        { "type": "review", "settings": { "reviewer": "Denise W.", "pet_name": "Peanut", "stars": 5, "text": "Best groom Peanut has ever had, and the price list right on the website made it so easy to know what to book. The blueberry facial is her favorite!" } },
+        { "type": "review", "settings": { "reviewer": "Mike & Ana", "pet_name": "Duke", "stars": 5, "text": "Duke is a 110 lb Newfie and most places turn us away. Not here! He came home fluffy, fresh, and clearly happy. Booking online took two minutes." } },
+        { "type": "review", "settings": { "reviewer": "Karen L.", "pet_name": "Milo", "stars": 5, "text": "The puppy package was perfect for Milo's first groom. They took it slow, gave him treats, and now he LOVES bath time. These folks truly are nuts about mutts." } },
+        { "type": "review", "settings": { "reviewer": "Tom R.", "pet_name": "Sadie", "stars": 5, "text": "Fast, friendly, and Sadie's de-shed treatment has saved my couch. Booking from the price list was so easy — no more guessing what to ask for." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

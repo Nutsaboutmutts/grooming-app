@@ -1,0 +1,208 @@
+{% comment %}
+  Nuts About Mutts — Price List (for the Dawn theme)
+  Customers tap their dog's size and every price updates instantly.
+  Edit services, prices, and add-ons in the theme editor — no code needed.
+{% endcomment %}
+
+<style>
+  #nam-pricing-{{ section.id }} { --nam-teal: {{ section.settings.accent_color }}; --nam-teal-dark: #15594f; --nam-teal-soft: #e3f2ef; --nam-coral: {{ section.settings.button_color }}; --nam-cream: #fdf9f3; --nam-ink: #2b2620; --nam-ink-soft: #6f675d; --nam-line: #e7dfd2; padding: 56px 20px; background: var(--nam-cream); color: var(--nam-ink); }
+  #nam-pricing-{{ section.id }} .nam-inner { max-width: 1120px; margin: 0 auto; }
+  #nam-pricing-{{ section.id }} .nam-eyebrow { display: block; font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--nam-coral); margin-bottom: 8px; }
+  #nam-pricing-{{ section.id }} h2 { font-size: clamp(28px, 4vw, 40px); margin: 0 0 8px; line-height: 1.15; }
+  #nam-pricing-{{ section.id }} .nam-sub { color: var(--nam-ink-soft); margin: 0 0 28px; max-width: 560px; }
+  #nam-pricing-{{ section.id }} .nam-size-toggle { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 32px; }
+  #nam-pricing-{{ section.id }} .nam-size-btn { background: #fff; border: 2px solid var(--nam-line); border-radius: 16px; padding: 14px 8px; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 2px; transition: border-color .15s, box-shadow .15s; font-family: inherit; }
+  #nam-pricing-{{ section.id }} .nam-size-btn.active { border-color: var(--nam-teal); box-shadow: 0 0 0 4px var(--nam-teal-soft); }
+  #nam-pricing-{{ section.id }} .nam-size-icon { font-size: 28px; }
+  #nam-pricing-{{ section.id }} .nam-size-label { font-weight: 700; font-size: 15px; }
+  #nam-pricing-{{ section.id }} .nam-size-range { font-size: 12px; color: var(--nam-ink-soft); }
+  #nam-pricing-{{ section.id }} .nam-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+  #nam-pricing-{{ section.id }} .nam-card { position: relative; background: #fff; border: 1px solid var(--nam-line); border-radius: 20px; padding: 26px 22px; display: flex; flex-direction: column; box-shadow: 0 4px 24px rgba(43,38,32,.08); }
+  #nam-pricing-{{ section.id }} .nam-card.popular { border: 2px solid var(--nam-coral); }
+  #nam-pricing-{{ section.id }} .nam-popular-tag { position: absolute; top: -13px; left: 20px; background: var(--nam-coral); color: #fff; font-size: 12px; font-weight: 700; padding: 4px 14px; border-radius: 999px; }
+  #nam-pricing-{{ section.id }} .nam-card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  #nam-pricing-{{ section.id }} .nam-card-head h3 { margin: 0; font-size: 19px; }
+  #nam-pricing-{{ section.id }} .nam-card-icon { font-size: 26px; }
+  #nam-pricing-{{ section.id }} .nam-card-desc { color: var(--nam-ink-soft); font-size: 14px; margin: 0 0 12px; }
+  #nam-pricing-{{ section.id }} .nam-card ul { list-style: none; padding: 0; margin: 0 0 16px; flex: 1; }
+  #nam-pricing-{{ section.id }} .nam-card li { font-size: 14px; padding: 3px 0; }
+  #nam-pricing-{{ section.id }} .nam-card-foot { display: flex; align-items: center; justify-content: space-between; border-top: 1px dashed var(--nam-line); padding-top: 14px; }
+  #nam-pricing-{{ section.id }} .nam-price { font-size: 28px; font-weight: 800; color: var(--nam-teal-dark); display: block; line-height: 1.1; }
+  #nam-pricing-{{ section.id }} .nam-time { font-size: 12px; color: var(--nam-ink-soft); }
+  #nam-pricing-{{ section.id }} .nam-book-btn { background: var(--nam-coral); color: #fff; border: none; border-radius: 999px; padding: 10px 22px; font-size: 14px; font-weight: 700; text-decoration: none; display: inline-block; }
+  #nam-pricing-{{ section.id }} .nam-book-btn:hover { filter: brightness(.95); }
+  #nam-pricing-{{ section.id }} .nam-addons { margin-top: 40px; background: #fff; border: 1px solid var(--nam-line); border-radius: 20px; padding: 26px; }
+  #nam-pricing-{{ section.id }} .nam-addons h3 { margin: 0 0 14px; font-size: 20px; }
+  #nam-pricing-{{ section.id }} .nam-addons-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; }
+  #nam-pricing-{{ section.id }} .nam-addon { display: flex; justify-content: space-between; background: #f4ede2; border-radius: 12px; padding: 10px 16px; font-size: 14px; }
+  #nam-pricing-{{ section.id }} .nam-addon strong { color: var(--nam-teal-dark); }
+  #nam-pricing-{{ section.id }} .nam-note { font-size: 13px; color: var(--nam-ink-soft); margin: 14px 0 0; }
+  @media (max-width: 749px) { #nam-pricing-{{ section.id }} .nam-size-toggle { grid-template-columns: 1fr 1fr; } }
+</style>
+
+<div id="nam-pricing-{{ section.id }}">
+  <div class="nam-inner">
+    {% if section.settings.eyebrow != blank %}<span class="nam-eyebrow">{{ section.settings.eyebrow }}</span>{% endif %}
+    <h2>{{ section.settings.heading }}</h2>
+    {% if section.settings.subheading != blank %}<p class="nam-sub">{{ section.settings.subheading }}</p>{% endif %}
+
+    <div class="nam-size-toggle" role="tablist" aria-label="Dog size">
+      {% assign sizes = 'small,medium,large,xl' | split: ',' %}
+      {% for size in sizes %}
+        {% assign label_key = 'label_' | append: size %}
+        {% assign range_key = 'range_' | append: size %}
+        {% assign icon_key = 'icon_' | append: size %}
+        <button type="button" class="nam-size-btn{% if size == 'medium' %} active{% endif %}" data-size="{{ size }}" role="tab" aria-selected="{% if size == 'medium' %}true{% else %}false{% endif %}">
+          <span class="nam-size-icon">{{ section.settings[icon_key] }}</span>
+          <span class="nam-size-label">{{ section.settings[label_key] }}</span>
+          <span class="nam-size-range">{{ section.settings[range_key] }}</span>
+        </button>
+      {% endfor %}
+    </div>
+
+    <div class="nam-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'service' %}
+          <div class="nam-card{% if block.settings.popular %} popular{% endif %}" {{ block.shopify_attributes }}>
+            {% if block.settings.popular %}<span class="nam-popular-tag">⭐ Most Popular</span>{% endif %}
+            <div class="nam-card-head">
+              <span class="nam-card-icon">{{ block.settings.icon }}</span>
+              <h3>{{ block.settings.title }}</h3>
+            </div>
+            <p class="nam-card-desc">{{ block.settings.description }}</p>
+            <ul>
+              {% assign items = block.settings.includes | newline_to_br | split: '<br />' %}
+              {% for item in items %}
+                {% assign trimmed = item | strip %}
+                {% if trimmed != blank %}<li>✓ {{ trimmed }}</li>{% endif %}
+              {% endfor %}
+            </ul>
+            <div class="nam-card-foot">
+              <div>
+                <span class="nam-price" data-small="{{ block.settings.price_small }}" data-medium="{{ block.settings.price_medium }}" data-large="{{ block.settings.price_large }}" data-xl="{{ block.settings.price_xl }}">${{ block.settings.price_medium }}</span>
+                {% if block.settings.duration != blank %}<span class="nam-time">⏱ {{ block.settings.duration }}</span>{% endif %}
+              </div>
+              {% if section.settings.book_link != blank %}
+                <a class="nam-book-btn" href="{{ section.settings.book_link }}">Book</a>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% assign has_addons = false %}
+    {% for block in section.blocks %}{% if block.type == 'addon' %}{% assign has_addons = true %}{% endif %}{% endfor %}
+    {% if has_addons %}
+      <div class="nam-addons">
+        <h3>✨ {{ section.settings.addons_heading }}</h3>
+        <div class="nam-addons-grid">
+          {% for block in section.blocks %}
+            {% if block.type == 'addon' %}
+              <div class="nam-addon" {{ block.shopify_attributes }}>
+                <span>{{ block.settings.name }}</span>
+                <strong>+${{ block.settings.price }}</strong>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% if section.settings.addons_note != blank %}<p class="nam-note">{{ section.settings.addons_note }}</p>{% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('nam-pricing-{{ section.id }}');
+    if (!root) return;
+    root.querySelectorAll('.nam-size-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        root.querySelectorAll('.nam-size-btn').forEach(function (b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        var size = btn.dataset.size;
+        root.querySelectorAll('.nam-price').forEach(function (el) {
+          el.textContent = '$' + el.dataset[size];
+        });
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "NAM Price List",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow text", "default": "Services & Pricing" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Pick a size, see every price" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "No surprises at pickup — select your dog's size and prices update instantly." },
+    { "type": "url", "id": "book_link", "label": "Book button link (your booking page)" },
+    { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#1F7A70" },
+    { "type": "color", "id": "button_color", "label": "Button color", "default": "#F4845F" },
+    { "type": "header", "content": "Dog sizes" },
+    { "type": "text", "id": "icon_small", "label": "Small icon", "default": "🐕‍🦺" },
+    { "type": "text", "id": "label_small", "label": "Small label", "default": "Small" },
+    { "type": "text", "id": "range_small", "label": "Small weight range", "default": "Under 20 lbs" },
+    { "type": "text", "id": "icon_medium", "label": "Medium icon", "default": "🐕" },
+    { "type": "text", "id": "label_medium", "label": "Medium label", "default": "Medium" },
+    { "type": "text", "id": "range_medium", "label": "Medium weight range", "default": "20 – 50 lbs" },
+    { "type": "text", "id": "icon_large", "label": "Large icon", "default": "🦮" },
+    { "type": "text", "id": "label_large", "label": "Large label", "default": "Large" },
+    { "type": "text", "id": "range_large", "label": "Large weight range", "default": "50 – 90 lbs" },
+    { "type": "text", "id": "icon_xl", "label": "Extra Large icon", "default": "🐩" },
+    { "type": "text", "id": "label_xl", "label": "Extra Large label", "default": "Extra Large" },
+    { "type": "text", "id": "range_xl", "label": "Extra Large weight range", "default": "Over 90 lbs" },
+    { "type": "header", "content": "Add-ons" },
+    { "type": "text", "id": "addons_heading", "label": "Add-ons heading", "default": "Pawsome Add-Ons" },
+    { "type": "textarea", "id": "addons_note", "label": "Add-ons note", "default": "Severely matted coats, special-handling pups, or extra-long coats may add to the price — we'll always confirm with you first." }
+  ],
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Icon (emoji)", "default": "✂️" },
+        { "type": "text", "id": "title", "label": "Service name", "default": "Full Groom" },
+        { "type": "textarea", "id": "description", "label": "Description" },
+        { "type": "textarea", "id": "includes", "label": "What's included (one per line)" },
+        { "type": "number", "id": "price_small", "label": "Price — Small ($)", "default": 65 },
+        { "type": "number", "id": "price_medium", "label": "Price — Medium ($)", "default": 80 },
+        { "type": "number", "id": "price_large", "label": "Price — Large ($)", "default": 95 },
+        { "type": "number", "id": "price_xl", "label": "Price — Extra Large ($)", "default": 115 },
+        { "type": "text", "id": "duration", "label": "How long it takes", "default": "2 – 3 hours" },
+        { "type": "checkbox", "id": "popular", "label": "Show 'Most Popular' badge", "default": false }
+      ]
+    },
+    {
+      "type": "addon",
+      "name": "Add-on",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Add-on name", "default": "💅 Nail Grind" },
+        { "type": "number", "id": "price", "label": "Price ($)", "default": 12 }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NAM Price List",
+      "blocks": [
+        { "type": "service", "settings": { "icon": "✂️", "title": "The Full Mutt Makeover", "description": "The works! Bath, blow-dry, haircut & style, nail trim, ear cleaning, and a finishing bow or bandana.", "includes": "Warm bath & massage\nBlow-dry & brush-out\nHaircut & styling\nNail trim\nEar cleaning\nBow or bandana", "price_small": 65, "price_medium": 80, "price_large": 95, "price_xl": 115, "duration": "2 – 3 hours", "popular": true } },
+        { "type": "service", "settings": { "icon": "🛁", "title": "Splish Splash Bath & Brush", "description": "A refreshing scrub for pups who just need to freshen up. Bath, blow-dry, full brush-out, and a spritz of cologne.", "includes": "Warm bath & massage\nBlow-dry & brush-out\nCologne spritz\nBandana", "price_small": 35, "price_medium": 45, "price_large": 55, "price_xl": 70, "duration": "1 – 1.5 hours" } },
+        { "type": "service", "settings": { "icon": "🐶", "title": "Puppy's First Pamper", "description": "A gentle, patient introduction to grooming for pups under 6 months. Short, sweet, and full of treats.", "includes": "Gentle intro bath\nLight face & feet trim\nNail trim\nLots of treats & praise", "price_small": 45, "price_medium": 45, "price_large": 55, "price_xl": 55, "duration": "45 min – 1 hour" } },
+        { "type": "service", "settings": { "icon": "🐾", "title": "Quick Tidy-Up", "description": "In between grooms? Face, feet, and sanitary trim plus a nail trim to keep your pup looking sharp.", "includes": "Face & feet trim\nSanitary trim\nNail trim", "price_small": 30, "price_medium": 35, "price_large": 40, "price_xl": 45, "duration": "30 – 45 min" } },
+        { "type": "addon", "settings": { "name": "💅 Nail Grind (smooth finish)", "price": 12 } },
+        { "type": "addon", "settings": { "name": "🦷 Teeth Brushing", "price": 10 } },
+        { "type": "addon", "settings": { "name": "💨 De-Shedding Treatment", "price": 15 } },
+        { "type": "addon", "settings": { "name": "🧼 Flea & Tick Bath", "price": 15 } },
+        { "type": "addon", "settings": { "name": "🫐 Blueberry Facial", "price": 10 } },
+        { "type": "addon", "settings": { "name": "🐾 Paw Balm Treatment", "price": 8 } }
+      ]
+    }
+  ]
+}
+{% endschema %}

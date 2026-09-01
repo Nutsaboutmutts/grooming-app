@@ -1,0 +1,31 @@
+{% comment %}
+  Nuts About Mutts — Sticky "Book Now" button (for the Dawn theme)
+  A floating appointment button that follows the customer as they scroll.
+  Add it once to your homepage (or any page) — it stays visible on top.
+{% endcomment %}
+
+<style>
+  #nam-sticky-{{ section.id }} { position: fixed; z-index: 60; bottom: 18px; right: 18px; }
+  #nam-sticky-{{ section.id }} a { display: inline-flex; align-items: center; gap: 8px; background: {{ section.settings.button_color }}; color: #fff; border-radius: 999px; padding: 15px 28px; font-size: 16px; font-weight: 700; text-decoration: none; box-shadow: 0 8px 28px rgba(226,106,67,.5); transition: transform .15s; }
+  #nam-sticky-{{ section.id }} a:hover { transform: translateY(-2px); }
+  @media (max-width: 749px) {
+    #nam-sticky-{{ section.id }} { right: 50%; transform: translateX(50%); }
+  }
+</style>
+
+<div id="nam-sticky-{{ section.id }}">
+  <a href="{{ section.settings.link }}">🐾 {{ section.settings.label }}</a>
+</div>
+
+{% schema %}
+{
+  "name": "NAM Sticky Book Button",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Button text", "default": "Book Now" },
+    { "type": "url", "id": "link", "label": "Link (your booking page)" },
+    { "type": "color", "id": "button_color", "label": "Button color", "default": "#F4845F" }
+  ],
+  "presets": [{ "name": "NAM Sticky Book Button" }]
+}
+{% endschema %}

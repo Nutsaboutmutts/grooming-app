@@ -19,10 +19,10 @@ const SALON = {
   ],
   // Put your real social media links here:
   socials: [
-    { name: "Facebook",  url: "https://www.facebook.com/nutsaboutmutts" },
-    { name: "Instagram", url: "https://www.instagram.com/nutsaboutmutts" },
-    { name: "TikTok",    url: "https://www.tiktok.com/@nutsaboutmutts" },
-    { name: "Amazon",    url: "https://www.amazon.com/shop/nutsaboutmutts" },
+    { name: "Facebook",  url: "https://www.facebook.com/werenutsaboutmutts" },
+    { name: "Instagram", url: "https://www.instagram.com/werenutsaboutmutts" },
+    { name: "TikTok",    url: "https://www.tiktok.com/@werenutsaboutmutts" },
+    { name: "Amazon",    url: "https://www.amazon.com/shop/nutsaboutmutts" }, // TODO: replace with your real Amazon storefront link
   ],
 };
 

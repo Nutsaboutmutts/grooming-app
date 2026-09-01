@@ -12,6 +12,7 @@ in Shopify's theme editor — **no code needed after setup**.
 | **NAM Pup Gallery** | (Optional — for later) Photo grid of your freshly-groomed pups, uploaded right in the theme editor |
 | **NAM Reviews** | 5-star summary plus review cards — paste in your real Google/Facebook reviews |
 | **NAM Appointment Form** | Modern 4-step booking wizard (size → service → extras → contact info) with a live price estimate. Requests are emailed to you through Shopify's built-in contact form — no extra apps |
+| **NAM FAQ** | Tap-to-open frequently asked questions — cuts down the phone calls |
 | **NAM Sticky Book Button** | A floating "🐾 Book Now" button that follows customers as they scroll |
 | **NAM Follow Us** | Big Facebook / Instagram / TikTok / Amazon storefront buttons — great under the reviews |
 
@@ -30,6 +31,7 @@ in Shopify's theme editor — **no code needed after setup**.
    - `nam-reviews`
    - `nam-how-it-works`
    - `nam-booking`
+   - `nam-faq`
    - `nam-sticky-book`
    - `nam-social`
 7. Close the code editor.
@@ -46,6 +48,8 @@ in Shopify's theme editor — **no code needed after setup**.
    - **NAM Booking Steps** (point its button at your Book an Appointment page)
    - **NAM Price List** (point its Book buttons at the same page)
    - **NAM Reviews**
+   - **NAM FAQ** (edit the answers to match your salon's real policies —
+     vaccination rules, payment, walk-ins)
    - **NAM Follow Us** (paste in your Facebook, Instagram, TikTok, and Amazon
      storefront links)
    - **NAM Sticky Book Button** (point it at the same page)

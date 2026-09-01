@@ -1,0 +1,71 @@
+{% comment %}
+  We're Nuts About Mutts Inc — FAQ (for the Dawn theme)
+  Tap-to-open questions and answers. Each question is a block —
+  add, remove, and reword them in the theme editor.
+{% endcomment %}
+
+<style>
+  #nam-faq-{{ section.id }} { --nam-teal-dark: #15594f; --nam-coral: {{ section.settings.accent_color }}; --nam-cream: #fdf9f3; --nam-ink: #2b2620; --nam-ink-soft: #6f675d; --nam-line: #e7dfd2; padding: 56px 20px; background: #fff; color: var(--nam-ink); }
+  #nam-faq-{{ section.id }} .nam-inner { max-width: 780px; margin: 0 auto; }
+  #nam-faq-{{ section.id }} .nam-eyebrow { display: block; font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--nam-coral); margin-bottom: 8px; }
+  #nam-faq-{{ section.id }} h2 { font-size: clamp(28px, 4vw, 40px); margin: 0 0 24px; line-height: 1.15; }
+  #nam-faq-{{ section.id }} details { background: var(--nam-cream); border: 1px solid var(--nam-line); border-radius: 16px; margin-bottom: 12px; overflow: hidden; }
+  #nam-faq-{{ section.id }} summary { list-style: none; cursor: pointer; padding: 18px 20px; font-size: 16px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  #nam-faq-{{ section.id }} summary::-webkit-details-marker { display: none; }
+  #nam-faq-{{ section.id }} summary:hover { color: var(--nam-teal-dark); }
+  #nam-faq-{{ section.id }} .nam-chevron { color: var(--nam-coral); font-size: 18px; transition: transform .2s; flex-shrink: 0; }
+  #nam-faq-{{ section.id }} details[open] .nam-chevron { transform: rotate(180deg); }
+  #nam-faq-{{ section.id }} .nam-answer { margin: 0; padding: 0 20px 18px; font-size: 15px; line-height: 1.7; color: var(--nam-ink-soft); }
+  #nam-faq-{{ section.id }} .nam-more { margin: 24px 0 0; text-align: center; font-size: 15px; color: var(--nam-ink-soft); }
+</style>
+
+<div id="nam-faq-{{ section.id }}">
+  <div class="nam-inner">
+    {% if section.settings.eyebrow != blank %}<span class="nam-eyebrow">{{ section.settings.eyebrow }}</span>{% endif %}
+    <h2>{{ section.settings.heading }}</h2>
+    {% for block in section.blocks %}
+      <details {{ block.shopify_attributes }}>
+        <summary>{{ block.settings.question }}<span class="nam-chevron" aria-hidden="true">▾</span></summary>
+        <p class="nam-answer">{{ block.settings.answer }}</p>
+      </details>
+    {% endfor %}
+    {% if section.settings.footer_text != blank %}<p class="nam-more">{{ section.settings.footer_text }}</p>{% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "NAM FAQ",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow text", "default": "Good questions" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Frequently asked questions" },
+    { "type": "text", "id": "footer_text", "label": "Closing line", "default": "Still wondering something? Give us a call — we love talking dogs. 🐾" },
+    { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#F4845F" }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "How often should my dog be groomed?" },
+        { "type": "textarea", "id": "answer", "label": "Answer", "default": "Most pups do best every 4–8 weeks depending on their coat." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NAM FAQ",
+      "blocks": [
+        { "type": "faq", "settings": { "question": "How often should my dog be groomed?", "answer": "Most pups do best every 4–8 weeks depending on their coat. Doodles, poodles, and other curly coats need the shorter end of that range to stay mat-free. We're happy to recommend a schedule for your dog at their first visit." } },
+        { "type": "faq", "settings": { "question": "How long does a groom take?", "answer": "A bath & brush usually takes 1–1.5 hours and a full groom 2–3 hours, depending on your pup's size, coat, and how they feel about the blow dryer. We'll text you updates the whole way, and you'll get a message the moment they're ready for pickup." } },
+        { "type": "faq", "settings": { "question": "Do you take walk-ins?", "answer": "We're by appointment so every pup gets our full attention — but we can sometimes fit in nail trims and quick tidy-ups same-day. Book online or give us a call and we'll do our best!" } },
+        { "type": "faq", "settings": { "question": "My dog is nervous or has never been groomed. Can you help?", "answer": "Absolutely — gentle handling is our specialty, and nervous pups and rescues are some of our favorite clients. Tell us in the booking notes and we'll take it slow, with lots of breaks and treats. For puppies, our Puppy's First Pamper is the perfect low-stress introduction." } },
+        { "type": "faq", "settings": { "question": "What if my dog's coat is matted?", "answer": "We'll always do what's kindest for your dog. Light matting can often be brushed out; heavier matting may mean a shorter, comfortable cut and a little extra time, which can add to the price. We'll always talk it through with you before we do anything." } },
+        { "type": "faq", "settings": { "question": "What do I need to bring?", "answer": "Just your pup on a leash (or in a carrier for the littles) and proof of current rabies vaccination for their first visit. We'll handle the rest — including the good-smelling stuff." } },
+        { "type": "faq", "settings": { "question": "How do I pay, and can I tip my groomer?", "answer": "We accept cards and cash at pickup. Tips are never expected but always appreciated — our groomers keep 100% of them." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

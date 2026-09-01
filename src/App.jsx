@@ -116,6 +116,17 @@ const REVIEWS = [
 
 const RATING = { average: "5.0", count: "200+" };
 
+// FAQ — edit these questions & answers to match your salon's policies.
+const FAQS = [
+  { q: "How often should my dog be groomed?", a: "Most pups do best every 4–8 weeks depending on their coat. Doodles, poodles, and other curly coats need the shorter end of that range to stay mat-free. We're happy to recommend a schedule for your dog at their first visit." },
+  { q: "How long does a groom take?", a: "A bath & brush usually takes 1–1.5 hours and a full groom 2–3 hours, depending on your pup's size, coat, and how they feel about the blow dryer. We'll text you updates the whole way, and you'll get a message the moment they're ready for pickup." },
+  { q: "Do you take walk-ins?", a: "We're by appointment so every pup gets our full attention — but we can sometimes fit in nail trims and quick tidy-ups same-day. Book online or give us a call and we'll do our best!" },
+  { q: "My dog is nervous or has never been groomed. Can you help?", a: "Absolutely — gentle handling is our specialty, and nervous pups and rescues are some of our favorite clients. Tell us in the booking notes and we'll take it slow, with lots of breaks and treats. For puppies, our Puppy's First Pamper is the perfect low-stress introduction." },
+  { q: "What if my dog's coat is matted?", a: "We'll always do what's kindest for your dog. Light matting can often be brushed out; heavier matting may mean a shorter, comfortable cut and a little extra time, which can add to the price. We'll always talk it through with you before we do anything." },
+  { q: "What do I need to bring?", a: "Just your pup on a leash (or in a carrier for the littles) and proof of current rabies vaccination for their first visit. We'll handle the rest — including the good-smelling stuff." },
+  { q: "How do I pay, and can I tip my groomer?", a: "We accept cards and cash at pickup. Tips are never expected but always appreciated — our groomers keep 100% of them." },
+];
+
 // Awards & bragging rights — shown in the awards banner under the hero.
 const AWARDS = [
   { icon: "🏆", title: "4× Southlands Best", desc: "Voted Southlands Best dog groomer four times" },
@@ -162,7 +173,7 @@ function Stars({ n = 5 }) {
 
 function Nav({ onStaff }) {
   const [open, setOpen] = useState(false);
-  const links = [["Services & Pricing", "pricing"], ["Reviews", "reviews"], ["Contact", "contact"]];
+  const links = [["Services & Pricing", "pricing"], ["Reviews", "reviews"], ["FAQ", "faq"], ["Contact", "contact"]];
   const go = (id) => { setOpen(false); scrollTo(id); };
   return (
     <header className="nav">
@@ -384,6 +395,28 @@ function Reviews() {
           <p>Follow the daily glow-ups 🐾</p>
           <SocialLinks className="reviews-social" />
         </div>
+      </div>
+    </section>
+  );
+}
+
+function Faq() {
+  return (
+    <section className="section faq" id="faq">
+      <div className="section-inner faq-inner">
+        <span className="eyebrow">Good questions</span>
+        <h2>Frequently asked questions</h2>
+        <div className="faq-list">
+          {FAQS.map((f) => (
+            <details className="faq-item" key={f.q}>
+              <summary>{f.q}<span className="faq-chevron" aria-hidden="true">▾</span></summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+        <p className="faq-more">
+          Still wondering something? Call us at <a href={`tel:${SALON.phone.replace(/[^\d+]/g, "")}`}>{SALON.phone}</a> — we love talking dogs.
+        </p>
       </div>
     </section>
   );
@@ -668,6 +701,7 @@ export default function App() {
           put <Gallery /> back on the next line to show the photo section: */}
       {/* <Gallery /> */}
       <Reviews />
+      <Faq />
       <Booking preset={preset} />
       <Footer onStaff={() => setView("staff")} />
       <button className="fab" onClick={() => scrollTo("book")} aria-label="Book an appointment">

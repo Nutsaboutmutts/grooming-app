@@ -84,10 +84,9 @@ const SERVICES = [
 
 // Add-ons — step 3 of booking (optional extras, flat price).
 const ADDONS = [
-  { id: "nailgrind", name: "Nail Grind (smooth finish)", icon: "💅", price: 12 },
+  { id: "nailgrind", name: "Nail Grind (smooth finish)", icon: "💅", price: 15 },
   { id: "teeth",     name: "Teeth Brushing",             icon: "🦷", price: 10 },
   { id: "deshed",    name: "De-Shedding Treatment",      icon: "💨", price: 15 },
-  { id: "flea",      name: "Flea & Tick Bath",           icon: "🧼", price: 15 },
   { id: "facial",    name: "Blueberry Facial",           icon: "🫐", price: 10 },
   { id: "pawbalm",   name: "Paw Balm Treatment",         icon: "🐾", price: 8 },
 ];
@@ -123,6 +122,7 @@ const FAQS = [
   { q: "Do you take walk-ins?", a: "Nail trims are always walk-in — just $15, no appointment needed, stop by during business hours! Baths and grooms are by appointment so every pup gets our full attention. Book online or give us a call." },
   { q: "My dog is nervous or has never been groomed. Can you help?", a: "Absolutely — gentle handling is our specialty, and nervous pups and rescues are some of our favorite clients. Tell us in the booking notes and we'll take it slow, with lots of breaks and treats. For puppies, our Puppy's First Pamper is the perfect low-stress introduction." },
   { q: "What if my dog's coat is matted?", a: "We'll always do what's kindest for your dog. Light matting can often be brushed out; heavier matting may mean a shorter, comfortable cut and a little extra time, which can add to the price. We'll always talk it through with you before we do anything." },
+  { q: "What if my dog has fleas?", a: "We keep our salon completely flea-free for every pup's safety, so we don't offer flea baths. If we spot fleas at check-in or during the groom, we'll pause and send your pup home — no judgment, it happens! Once your dog is flea-free (your vet can recommend a treatment), we'll happily get you rescheduled." },
   { q: "What do I need to bring?", a: "Just your pup on a leash (or in a carrier for the littles) and proof of current rabies vaccination for their first visit. We'll handle the rest — including the good-smelling stuff." },
   { q: "How do I pay, and can I tip my groomer?", a: "We accept cash and card at pickup. Tips are never expected but always appreciated — they're shared between your pup's groomer and bather, so the whole team that pampered them feels the love." },
 ];

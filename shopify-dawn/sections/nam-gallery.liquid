@@ -1,0 +1,84 @@
+{% comment %}
+  We're Nuts About Mutts Inc — Pup Gallery (for the Dawn theme)
+  Show off your best grooms! Each photo is a block: click it in the
+  theme editor, upload a picture, and add the pup's name and service.
+  Photos of real, freshly-groomed dogs sell better than anything else —
+  before-and-afters especially.
+{% endcomment %}
+
+<style>
+  #nam-gallery-{{ section.id }} { --nam-coral: {{ section.settings.accent_color }}; --nam-cream: #fdf9f3; --nam-ink: #2b2620; --nam-ink-soft: #6f675d; --nam-line: #e7dfd2; padding: 56px 20px; background: #fff; color: var(--nam-ink); }
+  #nam-gallery-{{ section.id }} .nam-inner { max-width: 1120px; margin: 0 auto; }
+  #nam-gallery-{{ section.id }} .nam-eyebrow { display: block; font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--nam-coral); margin-bottom: 8px; }
+  #nam-gallery-{{ section.id }} h2 { font-size: clamp(28px, 4vw, 40px); margin: 0 0 8px; line-height: 1.15; }
+  #nam-gallery-{{ section.id }} .nam-sub { color: var(--nam-ink-soft); margin: 0 0 28px; max-width: 560px; }
+  #nam-gallery-{{ section.id }} .nam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; }
+  #nam-gallery-{{ section.id }} figure { margin: 0; border-radius: 20px; overflow: hidden; background: var(--nam-cream); border: 1px solid var(--nam-line); box-shadow: 0 4px 24px rgba(43,38,32,.08); }
+  #nam-gallery-{{ section.id }} .nam-img, #nam-gallery-{{ section.id }} .nam-placeholder { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; background: #f4ede2; }
+  #nam-gallery-{{ section.id }} figcaption { padding: 12px 16px; font-size: 14px; color: var(--nam-ink-soft); background: #fff; border-top: 1px solid var(--nam-line); }
+  #nam-gallery-{{ section.id }} figcaption strong { color: var(--nam-ink); }
+</style>
+
+<div id="nam-gallery-{{ section.id }}">
+  <div class="nam-inner">
+    {% if section.settings.eyebrow != blank %}<span class="nam-eyebrow">{{ section.settings.eyebrow }}</span>{% endif %}
+    <h2>{{ section.settings.heading }}</h2>
+    {% if section.settings.subheading != blank %}<p class="nam-sub">{{ section.settings.subheading }}</p>{% endif %}
+    <div class="nam-grid">
+      {% for block in section.blocks %}
+        <figure {{ block.shopify_attributes }}>
+          {% if block.settings.image %}
+            {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', class: 'nam-img', alt: block.settings.pet_name }}
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'nam-placeholder' }}
+          {% endif %}
+          {% if block.settings.pet_name != blank or block.settings.note != blank %}
+            <figcaption>
+              {% if block.settings.pet_name != blank %}<strong>{{ block.settings.pet_name }}</strong>{% endif %}
+              {% if block.settings.pet_name != blank and block.settings.note != blank %} · {% endif %}
+              {{ block.settings.note }}
+            </figcaption>
+          {% endif %}
+        </figure>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "NAM Pup Gallery",
+  "tag": "section",
+  "settings": [
+    { "type": "paragraph", "content": "Upload photos of your freshly-groomed pups — before-and-afters work best. Each photo is a block below." },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow text", "default": "Fresh out the tub" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Our happy customers" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "A few of the very good dogs we've had the honor of pampering." },
+    { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#F4845F" }
+  ],
+  "blocks": [
+    {
+      "type": "photo",
+      "name": "Photo",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Photo" },
+        { "type": "text", "id": "pet_name", "label": "Pup's name", "default": "Bella" },
+        { "type": "text", "id": "note", "label": "Caption (service or story)", "default": "Full Mutt Makeover" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NAM Pup Gallery",
+      "blocks": [
+        { "type": "photo" },
+        { "type": "photo" },
+        { "type": "photo" },
+        { "type": "photo" },
+        { "type": "photo" },
+        { "type": "photo" }
+      ]
+    }
+  ]
+}
+{% endschema %}

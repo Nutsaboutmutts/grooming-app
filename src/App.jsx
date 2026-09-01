@@ -92,6 +92,18 @@ const ADDONS = [
   { id: "pawbalm",   name: "Paw Balm Treatment",         icon: "🐾", price: 8 },
 ];
 
+// Gallery — put your best photos here! Either paste web links (e.g. from your
+// Instagram) into src, or drop image files into a public/images folder and use
+// src: "/images/bella.jpg". Cards without a src show a friendly placeholder.
+const GALLERY = [
+  { src: "", pet: "Bella",  note: "Full Mutt Makeover" },
+  { src: "", pet: "Rocky",  note: "Bath & Brush" },
+  { src: "", pet: "Peanut", note: "Blueberry Facial Day" },
+  { src: "", pet: "Duke",   note: "Big Boy, Bigger Glow-Up" },
+  { src: "", pet: "Milo",   note: "Puppy's First Pamper" },
+  { src: "", pet: "Sadie",  note: "De-Shed Transformation" },
+];
+
 // Reviews — swap these placeholders for your real Google / Facebook reviews.
 const REVIEWS = [
   { name: "Sarah M.",   pet: "Bella",   stars: 5, text: "Bella comes home from Nuts About Mutts looking like a show dog every single time! The text updates during her groom are the sweetest touch — I always know exactly how she's doing." },
@@ -308,6 +320,36 @@ function Pricing({ onBook }) {
           </div>
           <p className="addons-note">Severely matted coats, special-handling pups, or extra-long coats may add to the price — we'll always confirm with you first.</p>
         </div>
+      </div>
+    </section>
+  );
+}
+
+function Gallery() {
+  return (
+    <section className="section gallery" id="gallery">
+      <div className="section-inner">
+        <span className="eyebrow">Fresh out the tub</span>
+        <h2>Our happy customers</h2>
+        <p className="section-sub">A few of the very good dogs we've had the honor of pampering.</p>
+        <div className="gallery-grid">
+          {GALLERY.map((g) => (
+            <figure className="gallery-card" key={g.pet}>
+              {g.src ? (
+                <img src={g.src} alt={`${g.pet} after their groom — ${g.note}`} loading="lazy" />
+              ) : (
+                <div className="gallery-placeholder" role="img" aria-label={`Photo of ${g.pet} coming soon`}>
+                  <span>🐶</span>
+                  <small>{g.pet}'s photo goes here</small>
+                </div>
+              )}
+              <figcaption><strong>{g.pet}</strong> · {g.note}</figcaption>
+            </figure>
+          ))}
+        </div>
+        <p className="gallery-follow">
+          Want more glow-ups? <a href={SALON.socials.find((s) => s.name === "Instagram")?.url} target="_blank" rel="noopener noreferrer">Follow us on Instagram</a> for fresh cuts every week. 🐾
+        </p>
       </div>
     </section>
   );
@@ -622,6 +664,7 @@ export default function App() {
       <Awards />
       <HowItWorks />
       <Pricing onBook={bookFromPricing} />
+      <Gallery />
       <Reviews />
       <Booking preset={preset} />
       <Footer onStaff={() => setView("staff")} />

@@ -9,6 +9,7 @@ in Shopify's theme editor — **no code needed after setup**.
 | **NAM Awards** | A slim banner showing off your awards — 4× Southlands Best, Best on Chicago's South Side |
 | **NAM Booking Steps** | "Booking is simple" — 3 clear steps so customers know exactly what to choose |
 | **NAM Price List** | Customers tap their dog's size (Small / Medium / Large / XL) and every price updates instantly. Includes add-ons list |
+| **NAM Pup Gallery** | Photo grid of your freshly-groomed pups — upload pictures right in the theme editor |
 | **NAM Reviews** | 5-star summary plus review cards — paste in your real Google/Facebook reviews |
 | **NAM Appointment Form** | Modern 4-step booking wizard (size → service → extras → contact info) with a live price estimate. Requests are emailed to you through Shopify's built-in contact form — no extra apps |
 | **NAM Sticky Book Button** | A floating "🐾 Book Now" button that follows customers as they scroll |
@@ -25,6 +26,7 @@ in Shopify's theme editor — **no code needed after setup**.
    `sections/nam-price-list.liquid` from this folder. Click **Save**.
 6. Repeat step 4–5 for each of the other files:
    - `nam-awards`
+   - `nam-gallery`
    - `nam-reviews`
    - `nam-how-it-works`
    - `nam-booking`
@@ -43,6 +45,8 @@ in Shopify's theme editor — **no code needed after setup**.
    - **NAM Awards** (right under your hero banner)
    - **NAM Booking Steps** (point its button at your Book an Appointment page)
    - **NAM Price List** (point its Book buttons at the same page)
+   - **NAM Pup Gallery** (click each photo block and upload your best
+     before-and-afters — phone photos in good light work great)
    - **NAM Reviews**
    - **NAM Follow Us** (paste in your Facebook, Instagram, TikTok, and Amazon
      storefront links)
@@ -70,6 +74,10 @@ add-ons, estimated total, preferred day/time, and the customer's contact info.
 - **Hero:** use Dawn's built-in **Image banner** section with a great photo of a
   freshly groomed pup, heading like "Fresh cuts. Happy mutts.", and a button
   labeled **Book an Appointment** linking to your booking page.
+- **Photos win:** real photos of your own clients beat stock photos and
+  graphics every time. Phone photos work great — natural light, get on the
+  dog's eye level, and shoot the "after" in front of a plain wall or your
+  branded backdrop. Before-and-after pairs are marketing gold.
 - **Colors & fonts:** in **Customize → Theme settings**, set your accent colors
   (the sections default to teal `#1F7A70` and coral `#F4845F` — change them in
   each section's settings to match whatever you pick).

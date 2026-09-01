@@ -275,7 +275,7 @@ function HowItWorks() {
   const steps = [
     { icon: "📏", title: "1. Pick your pup's size", desc: "Small, medium, large, or extra large — pricing is clear for every size." },
     { icon: "✂️", title: "2. Choose a service", desc: "Full body cut, trim-up, bath only, or a puppy trim. Add extras if you like." },
-    { icon: "📅", title: "3. Book your spot", desc: "Any Book button takes you to our secure Square booking site — pick your time and message us there with any questions." },
+    { icon: "📅", title: "3. Book your spot", desc: "Tap any Book button to book online in seconds — pick your time and message us right there with any questions." },
   ];
   return (
     <section className="section how">
@@ -471,12 +471,12 @@ function BookSquare() {
           <span className="eyebrow">Book an appointment</span>
           <h2>Ready for a fresh cut?</h2>
           <p className="book-square-text">
-            We take appointments through our secure <strong>Square booking site</strong> —
-            pick your service, choose a time that works, and you can{" "}
-            <strong>message us right there</strong> with any questions or special requests.
+            Booking online is quick and easy — pick your service, choose a time
+            that works, and you can <strong>message us right there</strong> with
+            any questions or special requests.
           </p>
           <button className="btn btn-primary btn-lg" onClick={openBooking}>
-            🐾 Book on Square
+            🐾 Book Your Appointment
           </button>
           <p className="book-square-alt">
             Prefer to talk? Call us at <a href={`tel:${SALON.phone.replace(/[^\d+]/g, "")}`}>{SALON.phone}</a>

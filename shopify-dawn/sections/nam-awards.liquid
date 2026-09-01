@@ -1,0 +1,59 @@
+{% comment %}
+  We're Nuts About Mutts Inc — Awards banner (for the Dawn theme)
+  A slim band showing off your awards. Add, remove, or edit awards
+  as blocks in the theme editor.
+{% endcomment %}
+
+<style>
+  #nam-awards-{{ section.id }} { background: {{ section.settings.background_color }}; padding: 26px 20px; }
+  #nam-awards-{{ section.id }} .nam-inner { max-width: 1120px; margin: 0 auto; display: flex; justify-content: center; gap: clamp(20px, 5vw, 64px); flex-wrap: wrap; }
+  #nam-awards-{{ section.id }} .nam-award { display: flex; align-items: center; gap: 12px; color: #fff; }
+  #nam-awards-{{ section.id }} .nam-award-icon { font-size: 34px; }
+  #nam-awards-{{ section.id }} .nam-award strong { display: block; font-size: 16px; line-height: 1.2; }
+  #nam-awards-{{ section.id }} .nam-award small { display: block; font-size: 12.5px; color: #9ecfc6; }
+</style>
+
+<div id="nam-awards-{{ section.id }}">
+  <div class="nam-inner">
+    {% for block in section.blocks %}
+      <div class="nam-award" {{ block.shopify_attributes }}>
+        <span class="nam-award-icon">{{ block.settings.icon }}</span>
+        <span>
+          <strong>{{ block.settings.title }}</strong>
+          {% if block.settings.text != blank %}<small>{{ block.settings.text }}</small>{% endif %}
+        </span>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "NAM Awards",
+  "tag": "section",
+  "settings": [
+    { "type": "color", "id": "background_color", "label": "Background color", "default": "#15594F" }
+  ],
+  "blocks": [
+    {
+      "type": "award",
+      "name": "Award",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Icon (emoji)", "default": "🏆" },
+        { "type": "text", "id": "title", "label": "Award title", "default": "4× Southland's Best" },
+        { "type": "text", "id": "text", "label": "Short description", "default": "Voted Southland's Best dog groomer four times" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NAM Awards",
+      "blocks": [
+        { "type": "award", "settings": { "icon": "🏆", "title": "4× Southland's Best", "text": "Voted Southland's Best dog groomer four times" } },
+        { "type": "award", "settings": { "icon": "🥇", "title": "Best on the South Side", "text": "Chicago's South Side favorite grooming salon" } },
+        { "type": "award", "settings": { "icon": "💚", "title": "Loved by Pup Parents", "text": "5.0 stars from 200+ happy customers" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

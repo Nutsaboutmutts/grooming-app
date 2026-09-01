@@ -6,6 +6,7 @@ in Shopify's theme editor — **no code needed after setup**.
 
 | Section | What it does |
 | --- | --- |
+| **NAM Awards** | A slim banner showing off your awards — 4× Southland's Best, Best on Chicago's South Side |
 | **NAM Booking Steps** | "Booking is simple" — 3 clear steps so customers know exactly what to choose |
 | **NAM Price List** | Customers tap their dog's size (Small / Medium / Large / XL) and every price updates instantly. Includes add-ons list |
 | **NAM Reviews** | 5-star summary plus review cards — paste in your real Google/Facebook reviews |
@@ -22,6 +23,7 @@ in Shopify's theme editor — **no code needed after setup**.
    everything in the new file, and paste in the full contents of
    `sections/nam-price-list.liquid` from this folder. Click **Save**.
 6. Repeat step 4–5 for each of the other files:
+   - `nam-awards`
    - `nam-reviews`
    - `nam-how-it-works`
    - `nam-booking`
@@ -36,6 +38,7 @@ in Shopify's theme editor — **no code needed after setup**.
 3. Use the page dropdown at the top to open your new **Book an Appointment**
    page, click **Add section**, and add **NAM Appointment Form**.
 4. Open your **Home page** in the same dropdown and add, in order:
+   - **NAM Awards** (right under your hero banner)
    - **NAM Booking Steps** (point its button at your Book an Appointment page)
    - **NAM Price List** (point its Book buttons at the same page)
    - **NAM Reviews**

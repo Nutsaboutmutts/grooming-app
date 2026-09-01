@@ -97,6 +97,13 @@ const REVIEWS = [
 
 const RATING = { average: "5.0", count: "200+" };
 
+// Awards & bragging rights — shown in the awards banner under the hero.
+const AWARDS = [
+  { icon: "🏆", title: "4× Southland's Best", desc: "Voted Southland's Best dog groomer four times" },
+  { icon: "🥇", title: "Best on the South Side", desc: "Chicago's South Side favorite grooming salon" },
+  { icon: "💚", title: "Loved by Pup Parents", desc: `${RATING.average} stars from ${RATING.count} happy customers` },
+];
+
 /* ════════════════════════════════════════════════════════════════════════
    Components
    ════════════════════════════════════════════════════════════════════════ */
@@ -155,9 +162,28 @@ function Hero() {
           </button>
         </div>
         <div className="hero-trust">
+          <span className="hero-award">🏆 4× Southland's Best</span>
           <Stars />
           <span><strong>{RATING.average}</strong> from {RATING.count} happy pup parents</span>
         </div>
+      </div>
+    </section>
+  );
+}
+
+function Awards() {
+  return (
+    <section className="awards" aria-label="Awards">
+      <div className="section-inner awards-inner">
+        {AWARDS.map((a) => (
+          <div className="award" key={a.title}>
+            <span className="award-icon">{a.icon}</span>
+            <span>
+              <strong>{a.title}</strong>
+              <small>{a.desc}</small>
+            </span>
+          </div>
+        ))}
       </div>
     </section>
   );
@@ -556,6 +582,7 @@ export default function App() {
     <div className="site">
       <Nav onStaff={() => setView("staff")} />
       <Hero />
+      <Awards />
       <HowItWorks />
       <Pricing onBook={bookFromPricing} />
       <Reviews />

@@ -177,10 +177,34 @@ h3 { font-size: 20px; }
   align-items: center;
   justify-content: center;
   gap: 10px;
+  flex-wrap: wrap;
   font-size: 15px;
   color: var(--ink-soft);
 }
 .stars { color: var(--star); letter-spacing: 2px; font-size: 16px; }
+.hero-award {
+  background: #fdf3dc;
+  border: 1px solid #f0d9a5;
+  color: #8a6410;
+  border-radius: 999px;
+  padding: 5px 14px;
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* ── Awards band ── */
+.awards { background: var(--teal-dark); padding: 26px 20px; }
+.awards-inner {
+  display: flex;
+  justify-content: center;
+  gap: clamp(20px, 5vw, 64px);
+  flex-wrap: wrap;
+}
+.award { display: flex; align-items: center; gap: 12px; color: #fff; }
+.award-icon { font-size: 34px; }
+.award strong { display: block; font-size: 16px; line-height: 1.2; }
+.award small { display: block; font-size: 12.5px; color: #9ecfc6; }
 
 /* ── Sections ── */
 .section { padding: 80px 20px; }

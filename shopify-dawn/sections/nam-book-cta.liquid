@@ -1,0 +1,51 @@
+{% comment %}
+  We're Nuts About Mutts Inc — Book on Square (for the Dawn theme)
+  Sends customers to your Square booking site to pick a service and
+  time — they can also message the salon right there. Paste your
+  Square booking link in the theme editor (Square Dashboard →
+  Appointments → Online Booking → Channels).
+{% endcomment %}
+
+<style>
+  #nam-bookcta-{{ section.id }} { --nam-teal-dark: #15594f; --nam-coral: {{ section.settings.button_color }}; --nam-ink: #2b2620; --nam-ink-soft: #6f675d; --nam-line: #e7dfd2; padding: 56px 20px; background: #f4ede2; }
+  #nam-bookcta-{{ section.id }} .nam-card { max-width: 780px; margin: 0 auto; background: #fff; border: 1px solid var(--nam-line); border-radius: 20px; padding: 48px 32px; text-align: center; box-shadow: 0 12px 40px rgba(43,38,32,.14); color: var(--nam-ink); }
+  #nam-bookcta-{{ section.id }} .nam-eyebrow { display: block; font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--nam-coral); margin-bottom: 8px; }
+  #nam-bookcta-{{ section.id }} h2 { font-size: clamp(28px, 4vw, 40px); margin: 0 0 14px; line-height: 1.15; }
+  #nam-bookcta-{{ section.id }} .nam-text { color: var(--nam-ink-soft); max-width: 520px; margin: 0 auto 28px; font-size: 16px; line-height: 1.6; }
+  #nam-bookcta-{{ section.id }} .nam-btn { display: inline-block; background: var(--nam-coral); color: #fff; border-radius: 999px; padding: 17px 36px; font-size: 17px; font-weight: 700; text-decoration: none; box-shadow: 0 6px 20px rgba(244,132,95,.4); transition: transform .15s; }
+  #nam-bookcta-{{ section.id }} .nam-btn:hover { transform: translateY(-2px); }
+  #nam-bookcta-{{ section.id }} .nam-alt { margin: 22px 0 0; font-size: 15px; color: var(--nam-ink-soft); }
+  #nam-bookcta-{{ section.id }} .nam-note { margin: 8px 0 0; font-size: 14px; color: var(--nam-ink-soft); }
+</style>
+
+<div id="nam-bookcta-{{ section.id }}">
+  <div class="nam-card">
+    {% if section.settings.eyebrow != blank %}<span class="nam-eyebrow">{{ section.settings.eyebrow }}</span>{% endif %}
+    <h2>{{ section.settings.heading }}</h2>
+    <p class="nam-text">{{ section.settings.text }}</p>
+    {% if section.settings.square_url != blank %}
+      <a class="nam-btn" href="{{ section.settings.square_url }}" target="_blank" rel="noopener">🐾 {{ section.settings.button_label }}</a>
+    {% endif %}
+    {% if section.settings.alt_text != blank %}<p class="nam-alt">{{ section.settings.alt_text }}</p>{% endif %}
+    {% if section.settings.cat_note != blank %}<p class="nam-note">{{ section.settings.cat_note }}</p>{% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "NAM Book on Square",
+  "tag": "section",
+  "settings": [
+    { "type": "paragraph", "content": "Paste your Square booking link below. Find it in your Square Dashboard under Appointments → Online Booking → Channels." },
+    { "type": "text", "id": "square_url", "label": "Square booking site link", "default": "https://squareup.com/appointments/book/YOUR-SQUARE-LINK" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow text", "default": "Book an appointment" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Ready for a fresh cut?" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "We take appointments through our secure Square booking site — pick your service, choose a time that works, and you can message us right there with any questions or special requests." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Book on Square" },
+    { "type": "text", "id": "alt_text", "label": "Phone line", "default": "Prefer to talk? Give us a call!" },
+    { "type": "text", "id": "cat_note", "label": "Cat note", "default": "🐱 Booking for a cat? Cat appointments are scheduled by phone." },
+    { "type": "color", "id": "button_color", "label": "Button color", "default": "#F4845F" }
+  ],
+  "presets": [{ "name": "NAM Book on Square" }]
+}
+{% endschema %}

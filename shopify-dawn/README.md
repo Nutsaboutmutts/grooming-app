@@ -11,7 +11,8 @@ in Shopify's theme editor — **no code needed after setup**.
 | **NAM Price List** | Customers tap their dog's size (Small / Medium / Large / XL) and every price updates instantly. Includes add-ons list |
 | **NAM Pup Gallery** | (Optional — for later) Photo grid of your freshly-groomed pups, uploaded right in the theme editor |
 | **NAM Reviews** | 5-star summary plus review cards — paste in your real Google/Facebook reviews |
-| **NAM Appointment Form** | Modern 4-step booking wizard (size → service → extras → contact info) with a live price estimate. Requests are emailed to you through Shopify's built-in contact form — no extra apps |
+| **NAM Book on Square** | "Ready for a fresh cut?" section sending customers to your Square booking site, where they pick a time and can message you |
+| **NAM Appointment Form** | (Optional — not used with Square) On-site 4-step booking wizard that emails requests via Shopify's contact form |
 | **NAM FAQ** | Tap-to-open frequently asked questions — cuts down the phone calls |
 | **NAM Sticky Book Button** | A floating "🐾 Book Now" button that follows customers as they scroll |
 | **NAM Follow Us** | Big Facebook / Instagram / TikTok / Amazon storefront buttons — great under the reviews |
@@ -21,21 +22,23 @@ in Shopify's theme editor — **no code needed after setup**.
 This folder includes **`nuts-about-mutts-dawn-theme.zip`** — the official
 Shopify Dawn theme (v16.0.0) with every NAM section already inside and the
 homepage already assembled in the right order, with your prices, reviews,
-awards, FAQ, and social links pre-filled.
+awards, FAQ, and social links pre-filled. Every Book button sends customers
+to your **Square booking site**, where they pick a time and can message you.
 
 1. In your Shopify admin, go to **Online Store → Themes**.
 2. Scroll to **Theme library → Add theme → Upload zip file** and upload
    `nuts-about-mutts-dawn-theme.zip`. It appears as
    **"Dawn — Nuts About Mutts"** in your library (your live theme is untouched).
-3. Go to **Online Store → Pages → Add page**. Title it exactly
-   **Book an Appointment**. On the right, under **Theme template**, choose
-   **book**. Save. (This makes every "Book" button on the homepage work —
-   they all point at this page.)
-4. On the new theme, click **Customize** to preview. Add your hero photo to
-   the Image banner, and fix anything marked as placeholder (phone, address,
-   hours, prices you haven't given yet).
+3. **Paste your Square booking link.** Find it in your Square Dashboard under
+   **Appointments → Online Booking → Channels** (copy the booking site link).
+   Then in the theme's **Customize** view, paste it into the link setting of:
+   the **Image banner** button, **NAM Booking Steps**, **NAM Price List**,
+   **NAM Book on Square**, and **NAM Sticky Book Button**. (Or send the link
+   to Claude and get a zip with it already baked in everywhere.)
+4. While in **Customize**: add your hero photo to the Image banner, and fix
+   anything marked as placeholder (phone, address, hours, prices).
 5. Add **Book an Appointment** to your menu: **Online Store → Navigation →
-   Main menu → Add menu item**, linking to the new page.
+   Main menu → Add menu item**, pasting your Square booking link as the URL.
 6. When it looks right, click **Publish** on the new theme. Your old theme
    stays in the library as a backup you can switch back to anytime.
 
@@ -58,10 +61,12 @@ your logo under **Customize → Header** and pick your colors in
    - `nam-gallery`
    - `nam-reviews`
    - `nam-how-it-works`
-   - `nam-booking`
+   - `nam-book-cta`
    - `nam-faq`
    - `nam-sticky-book`
    - `nam-social`
+   - `nam-booking` (optional — only if you ever want an on-site form
+     instead of Square)
 7. Close the code editor.
 
 ## Set up your pages (in the theme editor — no code)
@@ -92,12 +97,13 @@ services, add-ons, reviews, colors, days, and time windows. The placeholder
 prices and reviews match the mockup site in this repo; replace them with your
 real ones.
 
-## Where do booking requests go?
+## Where do bookings happen?
 
-The appointment form uses Shopify's built-in contact form, so each request is
-emailed to your store's **sender email** (check it under **Settings →
-Notifications** in your Shopify admin). The email includes dog size, service,
-add-ons, estimated total, preferred day/time, and the customer's contact info.
+On your **Square booking site** — every Book button on the website opens it
+in a new tab. Customers pick their service and time there, and can message
+you through Square, so appointments, reminders, and messages all stay in the
+Square app you already use. (The old on-site NAM Appointment Form section is
+still included but unused; it's there if you ever want a website form again.)
 
 ## Tips for the rest of the modern look
 

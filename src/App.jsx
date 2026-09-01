@@ -8,6 +8,9 @@ import StaffApp from "./StaffApp";
 
 const SALON = {
   name: "We're Nuts About Mutts Inc",
+  // TODO: replace with your real Square booking site link
+  // (Square Dashboard → Appointments → Online Booking → Channels)
+  bookingUrl: "https://squareup.com/appointments/book/YOUR-SQUARE-LINK",
   tagline: "Where every pup leaves looking pawsitively fabulous",
   phone: "(555) 555-5309",
   email: "hello@nutsaboutmutts.com",
@@ -159,6 +162,7 @@ const AWARDS = [
    ════════════════════════════════════════════════════════════════════════ */
 
 const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+const openBooking = () => window.open(SALON.bookingUrl, "_blank", "noopener,noreferrer");
 
 const SOCIAL_ICONS = {
   Facebook: (
@@ -209,7 +213,7 @@ function Nav({ onStaff }) {
           <button className="nav-link nav-link-staff" onClick={onStaff}>Staff</button>
         </nav>
         <div className="nav-actions">
-          <button className="btn btn-primary btn-nav" onClick={() => go("book")}>Book Appointment</button>
+          <button className="btn btn-primary btn-nav" onClick={openBooking}>Book Appointment</button>
           <button className="nav-burger" aria-label="Menu" onClick={() => setOpen(!open)}>{open ? "✕" : "☰"}</button>
         </div>
       </div>
@@ -231,7 +235,7 @@ function Hero() {
           the whole way through.
         </p>
         <div className="hero-cta">
-          <button className="btn btn-primary btn-lg" onClick={() => scrollTo("book")}>
+          <button className="btn btn-primary btn-lg" onClick={openBooking}>
             🐾 Book an Appointment
           </button>
           <button className="btn btn-ghost btn-lg" onClick={() => scrollTo("pricing")}>
@@ -270,7 +274,7 @@ function HowItWorks() {
   const steps = [
     { icon: "📏", title: "1. Pick your pup's size", desc: "Small, medium, large, or extra large — pricing is clear for every size." },
     { icon: "✂️", title: "2. Choose a service", desc: "Full body cut, trim-up, bath only, or a puppy trim. Add extras if you like." },
-    { icon: "📅", title: "3. Book your spot", desc: "Tell us when works and we'll confirm. You'll get text updates during the groom!" },
+    { icon: "📅", title: "3. Book your spot", desc: "Any Book button takes you to our secure Square booking site — pick your time and message us there with any questions." },
   ];
   return (
     <section className="section how">
@@ -456,7 +460,36 @@ function Faq() {
   );
 }
 
-/* ── Booking wizard ── */
+/* ── Book on Square ── */
+function BookSquare() {
+  return (
+    <section className="section booking book-square" id="book">
+      <div className="section-inner booking-inner">
+        <div className="book-square-card">
+          <span className="eyebrow">Book an appointment</span>
+          <h2>Ready for a fresh cut?</h2>
+          <p className="book-square-text">
+            We take appointments through our secure <strong>Square booking site</strong> —
+            pick your service, choose a time that works, and you can{" "}
+            <strong>message us right there</strong> with any questions or special requests.
+          </p>
+          <button className="btn btn-primary btn-lg" onClick={openBooking}>
+            🐾 Book on Square
+          </button>
+          <p className="book-square-alt">
+            Prefer to talk? Call us at <a href={`tel:${SALON.phone.replace(/[^\d+]/g, "")}`}>{SALON.phone}</a>
+          </p>
+          <p className="booking-cat-note">
+            🐱 Booking for a cat? Cat appointments are scheduled by phone.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Booking wizard (old built-in form — no longer shown; kept in case
+      you ever want an on-site form again instead of Square) ── */
 function Booking({ preset }) {
   const [step, setStep] = useState(1);
   const [size, setSize] = useState(null);
@@ -715,7 +748,7 @@ function Footer({ onStaff }) {
           <h4>Quick Links</h4>
           <p><button className="footer-link" onClick={() => scrollTo("pricing")}>Services & Pricing</button></p>
           <p><button className="footer-link" onClick={() => scrollTo("reviews")}>Reviews</button></p>
-          <p><button className="footer-link" onClick={() => scrollTo("book")}>Book Appointment</button></p>
+          <p><a href={SALON.bookingUrl} target="_blank" rel="noopener noreferrer">Book Appointment</a></p>
           {SALON.socials.filter((s) => s.name === "Amazon").map((s) => (
             <p key={s.name}><a href={s.url} target="_blank" rel="noopener noreferrer">Our Amazon Storefront</a></p>
           ))}
@@ -730,12 +763,6 @@ function Footer({ onStaff }) {
 /* ── Root ── */
 export default function App() {
   const [view, setView] = useState("site"); // "site" | "staff"
-  const [preset, setPreset] = useState(null);
-
-  const bookFromPricing = (size, service) => {
-    setPreset({ size, service, at: Date.now() });
-    scrollTo("book");
-  };
 
   if (view === "staff") return <StaffApp onExit={() => setView("site")} />;
 
@@ -745,15 +772,15 @@ export default function App() {
       <Hero />
       <Awards />
       <HowItWorks />
-      <Pricing onBook={bookFromPricing} />
+      <Pricing onBook={openBooking} />
       {/* When you have pup photos, add them to the GALLERY list up top and
           put <Gallery /> back on the next line to show the photo section: */}
       {/* <Gallery /> */}
       <Reviews />
       <Faq />
-      <Booking preset={preset} />
+      <BookSquare />
       <Footer onStaff={() => setView("staff")} />
-      <button className="fab" onClick={() => scrollTo("book")} aria-label="Book an appointment">
+      <button className="fab" onClick={openBooking} aria-label="Book an appointment">
         🐾 Book Now
       </button>
     </div>

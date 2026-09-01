@@ -494,6 +494,24 @@ h3 { font-size: 20px; }
 .reviews-social a:hover { background: var(--coral); transform: translateY(-2px); }
 .reviews-social svg { width: 21px; height: 21px; }
 
+/* ── Book on Square ── */
+.book-square-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 48px 32px;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+.book-square-text {
+  color: var(--ink-soft);
+  max-width: 520px;
+  margin: 0 auto 28px;
+  font-size: 16px;
+}
+.book-square-alt { margin: 22px 0 0; font-size: 15px; color: var(--ink-soft); }
+.book-square-alt a { color: var(--teal-dark); font-weight: 800; }
+
 /* ── FAQ ── */
 .faq { background: var(--white); border-top: 1px solid var(--line); }
 .faq-inner { max-width: 780px; }

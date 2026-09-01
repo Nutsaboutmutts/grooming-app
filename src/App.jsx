@@ -17,6 +17,12 @@ const SALON = {
     ["Saturday", "9:00 AM – 3:00 PM"],
     ["Sunday", "Closed"],
   ],
+  // Put your real social media links here:
+  socials: [
+    { name: "Facebook",  url: "https://www.facebook.com/nutsaboutmutts" },
+    { name: "Instagram", url: "https://www.instagram.com/nutsaboutmutts" },
+    { name: "TikTok",    url: "https://www.tiktok.com/@nutsaboutmutts" },
+  ],
 };
 
 // Dog sizes — step 1 of booking. Prices below are per size.
@@ -109,6 +115,30 @@ const AWARDS = [
    ════════════════════════════════════════════════════════════════════════ */
 
 const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+
+const SOCIAL_ICONS = {
+  Facebook: (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z" /></svg>
+  ),
+  Instagram: (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85C2.42 3.92 3.94 2.38 7.15 2.27 8.42 2.21 8.8 2.2 12 2.2zm0 3.68a6.12 6.12 0 1 0 0 12.24 6.12 6.12 0 0 0 0-12.24zm0 2.2a3.92 3.92 0 1 1 0 7.84 3.92 3.92 0 0 1 0-7.84zm6.4-2.71a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z" /></svg>
+  ),
+  TikTok: (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-2.01-2.76V9.39a6.34 6.34 0 1 0 5.46 6.28V9.01a8.16 8.16 0 0 0 4.77 1.53V7.1a4.85 4.85 0 0 1-1-.41z" /></svg>
+  ),
+};
+
+function SocialLinks({ className }) {
+  return (
+    <div className={className}>
+      {SALON.socials.map((s) => (
+        <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={`${SALON.name} on ${s.name}`} title={s.name}>
+          {SOCIAL_ICONS[s.name] || s.name}
+        </a>
+      ))}
+    </div>
+  );
+}
 
 function Stars({ n = 5 }) {
   return <span className="stars" aria-label={`${n} out of 5 stars`}>{"★".repeat(n)}{"☆".repeat(5 - n)}</span>;
@@ -303,6 +333,10 @@ function Reviews() {
               </figcaption>
             </figure>
           ))}
+        </div>
+        <div className="reviews-follow">
+          <p>Follow the daily glow-ups 🐾</p>
+          <SocialLinks className="reviews-social" />
         </div>
       </div>
     </section>
@@ -535,11 +569,7 @@ function Footer({ onStaff }) {
         <div>
           <p className="footer-logo">🐾 We're Nuts About <em>Mutts</em></p>
           <p className="footer-tag">{SALON.tagline}</p>
-          <div className="footer-social">
-            <a href="#" aria-label="Facebook">📘</a>
-            <a href="#" aria-label="Instagram">📸</a>
-            <a href="#" aria-label="TikTok">🎵</a>
-          </div>
+          <SocialLinks className="footer-social" />
         </div>
         <div>
           <h4>Visit Us</h4>

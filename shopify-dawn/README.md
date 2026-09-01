@@ -12,6 +12,7 @@ in Shopify's theme editor — **no code needed after setup**.
 | **NAM Reviews** | 5-star summary plus review cards — paste in your real Google/Facebook reviews |
 | **NAM Appointment Form** | Modern 4-step booking wizard (size → service → extras → contact info) with a live price estimate. Requests are emailed to you through Shopify's built-in contact form — no extra apps |
 | **NAM Sticky Book Button** | A floating "🐾 Book Now" button that follows customers as they scroll |
+| **NAM Follow Us** | Big Facebook / Instagram / TikTok buttons — great under the reviews |
 
 ## Install (one time, about 10 minutes)
 
@@ -28,6 +29,7 @@ in Shopify's theme editor — **no code needed after setup**.
    - `nam-how-it-works`
    - `nam-booking`
    - `nam-sticky-book`
+   - `nam-social`
 7. Close the code editor.
 
 ## Set up your pages (in the theme editor — no code)
@@ -42,6 +44,7 @@ in Shopify's theme editor — **no code needed after setup**.
    - **NAM Booking Steps** (point its button at your Book an Appointment page)
    - **NAM Price List** (point its Book buttons at the same page)
    - **NAM Reviews**
+   - **NAM Follow Us** (paste in your Facebook, Instagram, and TikTok links)
    - **NAM Sticky Book Button** (point it at the same page)
 5. Add **Book Appointment** to your main menu: **Online Store → Navigation →
    Main menu → Add menu item**, linking to the Book an Appointment page.
@@ -71,3 +74,7 @@ add-ons, estimated total, preferred day/time, and the customer's contact info.
   each section's settings to match whatever you pick).
 - **Announcement bar:** Dawn's announcement bar is a great spot for
   "📞 Call or book online — new clients welcome!"
+- **Social icons in your header & footer:** Dawn shows social icons
+  automatically once you paste your links into **Customize → Theme settings →
+  Social media**. Fill those in too, so the icons appear in Dawn's own footer
+  alongside the NAM Follow Us section.

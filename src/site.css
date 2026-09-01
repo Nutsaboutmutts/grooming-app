@@ -396,6 +396,31 @@ h3 { font-size: 20px; }
   flex-shrink: 0;
 }
 
+.reviews-follow {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.reviews-follow p { margin: 0; font-size: 16px; font-weight: 700; color: #bfe3dc; }
+.reviews-social { display: flex; gap: 10px; }
+.reviews-social a {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.15s;
+}
+.reviews-social a:hover { background: var(--coral); transform: translateY(-2px); }
+.reviews-social svg { width: 21px; height: 21px; }
+
 /* ── Booking wizard ── */
 .booking { background: var(--sand); }
 .booking-inner { max-width: 780px; }
@@ -605,8 +630,21 @@ h3 { font-size: 20px; }
 .footer-logo { font-family: var(--font-display); font-weight: 900; font-size: 22px; color: #fff; margin: 0 0 6px; }
 .footer-logo em { color: var(--coral); font-style: normal; }
 .footer-tag { font-size: 14px; margin: 0 0 14px; }
-.footer-social { display: flex; gap: 12px; font-size: 22px; }
-.footer-social a { text-decoration: none; }
+.footer-social { display: flex; gap: 10px; }
+.footer-social a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.15s;
+}
+.footer-social a:hover { background: var(--coral); transform: translateY(-2px); }
+.footer-social svg { width: 19px; height: 19px; }
 .footer h4 { color: #fff; font-family: var(--font-body); font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; margin: 0 0 12px; }
 .footer p { font-size: 14px; margin: 0 0 8px; }
 .footer a { color: #f2b49b; text-decoration: none; }

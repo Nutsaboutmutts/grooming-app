@@ -8,9 +8,7 @@ import StaffApp from "./StaffApp";
 
 const SALON = {
   name: "We're Nuts About Mutts Inc",
-  // TODO: replace with your real Square booking site link
-  // (Square Dashboard → Appointments → Online Booking → Channels)
-  bookingUrl: "https://squareup.com/appointments/book/YOUR-SQUARE-LINK",
+  bookingUrl: "https://squareup.com/appointments/book/G2SZR8K8RV3M8",
   tagline: "Where every pup leaves looking pawsitively fabulous",
   phone: "(555) 555-5309",
   email: "hello@nutsaboutmutts.com",

@@ -29,16 +29,17 @@ to your **Square booking site**, where they pick a time and can message you.
 2. Scroll to **Theme library → Add theme → Upload zip file** and upload
    `nuts-about-mutts-dawn-theme.zip`. It appears as
    **"Dawn — Nuts About Mutts"** in your library (your live theme is untouched).
-3. **Paste your Square booking link.** Find it in your Square Dashboard under
-   **Appointments → Online Booking → Channels** (copy the booking site link).
-   Then in the theme's **Customize** view, paste it into the link setting of:
-   the **Image banner** button, **NAM Booking Steps**, **NAM Price List**,
-   **NAM Book on Square**, and **NAM Sticky Book Button**. (Or send the link
-   to Claude and get a zip with it already baked in everywhere.)
+3. **Your Square booking link is already baked in** — every Book button
+   points at `https://squareup.com/appointments/book/G2SZR8K8RV3M8`. Nothing
+   to do here except tap a Book button in the preview to confirm it opens
+   your booking site. (If the link ever changes, update it in **Customize**
+   on: the Image banner button, NAM Booking Steps, NAM Price List, NAM Book
+   on Square, and NAM Sticky Book Button.)
 4. While in **Customize**: add your hero photo to the Image banner, and fix
    anything marked as placeholder (phone, address, hours, prices).
 5. Add **Book an Appointment** to your menu: **Online Store → Navigation →
-   Main menu → Add menu item**, pasting your Square booking link as the URL.
+   Main menu → Add menu item**, pasting
+   `https://squareup.com/appointments/book/G2SZR8K8RV3M8` as the URL.
 6. When it looks right, click **Publish** on the new theme. Your old theme
    stays in the library as a backup you can switch back to anytime.
 

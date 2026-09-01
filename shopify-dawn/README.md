@@ -1,4 +1,4 @@
-# Nuts About Mutts — Dawn Theme Sections
+# We're Nuts About Mutts Inc — Dawn Theme Sections
 
 Five ready-to-use sections for your Shopify **Dawn** theme. Once installed, you
 (or anyone on your team) can edit every price, service, review, and color right

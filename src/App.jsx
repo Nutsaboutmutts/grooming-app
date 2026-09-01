@@ -7,7 +7,7 @@ import StaffApp from "./StaffApp";
    ════════════════════════════════════════════════════════════════════════ */
 
 const SALON = {
-  name: "Nuts About Mutts",
+  name: "We're Nuts About Mutts Inc",
   tagline: "Where every pup leaves looking pawsitively fabulous",
   phone: "(555) 555-5309",
   email: "hello@nutsaboutmutts.com",
@@ -116,7 +116,7 @@ function Nav({ onStaff }) {
       <div className="nav-inner">
         <button className="nav-logo" onClick={() => go("top")}>
           <span className="nav-logo-icon">🐾</span>
-          <span>Nuts About <em>Mutts</em></span>
+          <span>We're Nuts About <em>Mutts</em></span>
         </button>
         <nav className={`nav-links ${open ? "open" : ""}`}>
           {links.map(([label, id]) => (
@@ -507,7 +507,7 @@ function Footer({ onStaff }) {
     <footer className="footer" id="contact">
       <div className="section-inner footer-grid">
         <div>
-          <p className="footer-logo">🐾 Nuts About <em>Mutts</em></p>
+          <p className="footer-logo">🐾 We're Nuts About <em>Mutts</em></p>
           <p className="footer-tag">{SALON.tagline}</p>
           <div className="footer-social">
             <a href="#" aria-label="Facebook">📘</a>

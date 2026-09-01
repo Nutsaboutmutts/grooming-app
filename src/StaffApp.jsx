@@ -509,7 +509,7 @@ export default function StaffApp({ onExit }) {
   const [bathers,   setBathers]   = useState(DEFAULT_BATHERS);
   const [messages,  setMessages]  = useState(DEFAULT_MESSAGES);
   const [defPickup, setDefPickup] = useState(PICKUP_OPTIONS[0]);
-  const [salonName, setSalonName] = useState("We're Nuts About Mutts");
+  const [salonName, setSalonName] = useState("We're Nuts About Mutts Inc");
 
   const handleSettingsSave = ({groomers:g, bathers:b, messages:m, defaultPickup:p, salonName:n}) => {
     setGroomers(g); setBathers(b); setMessages(m); setDefPickup(p); setSalonName(n);

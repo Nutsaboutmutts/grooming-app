@@ -315,6 +315,7 @@ h3 { font-size: 20px; }
   line-height: 1;
 }
 .price-time { font-size: 12px; color: var(--ink-soft); }
+.price-from { font-size: 14px; font-weight: 600; color: var(--ink-soft); font-family: var(--font-body); }
 
 .addons {
   margin-top: 48px;

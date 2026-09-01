@@ -31,10 +31,10 @@ const SALON = {
 
 // Dog sizes — step 1 of booking. Prices below are per size.
 const SIZES = [
-  { id: "small",  label: "Small",       range: "Under 20 lbs",  icon: "🐕‍🦺", examples: "Yorkie, Chihuahua, Shih Tzu" },
-  { id: "medium", label: "Medium",      range: "20 – 50 lbs",   icon: "🐕",  examples: "Beagle, Cocker Spaniel, Corgi" },
-  { id: "large",  label: "Large",       range: "50 – 90 lbs",   icon: "🦮",  examples: "Lab, Golden Retriever, Boxer" },
-  { id: "xl",     label: "Extra Large", range: "Over 90 lbs",   icon: "🐩",  examples: "Great Dane, Newfoundland, Mastiff" },
+  { id: "small",  label: "XSmall/Small", range: "Under 20 lbs",  icon: "🐕‍🦺", examples: "Yorkie, Chihuahua, Shih Tzu" },
+  { id: "medium", label: "Medium",       range: "20 – 39 lbs",   icon: "🐕",  examples: "Beagle, Cocker Spaniel, Corgi" },
+  { id: "large",  label: "Large",        range: "40 – 79 lbs",   icon: "🦮",  examples: "Lab, Golden Retriever, Boxer" },
+  { id: "xl",     label: "Extra Large",  range: "80+ lbs",       icon: "🐩",  examples: "Great Dane, Newfoundland, Mastiff" },
 ];
 
 // Main services — step 2 of booking. price is per size id above.
@@ -45,10 +45,11 @@ const SERVICES = [
     short: "Full Body Cut",
     icon: "✂️",
     popular: true,
-    desc: "The Full Mutt Makeover! Bath, blow-dry, full haircut & style, nail trim, ear cleaning, and a finishing bow or bandana.",
+    from: true,
+    desc: "The Full Mutt Makeover! Bath, blow-dry, full haircut & style, nail trim, and ear cleaning. Short cuts start at the price shown — long cuts (7/8″ & up) and doodles & poodles run a little more.",
     includes: ["Warm bath & massage", "Blow-dry & brush-out", "Full haircut & styling", "Nail trim", "Ear cleaning", "Bow or bandana"],
-    price: { small: 85, medium: 125, large: 175, xl: 240 },
-    time: "2.5 – 3+ hours",
+    price: { small: 85, medium: 100, large: 135, xl: 170 },
+    time: "2¼ – 3¼ hours",
   },
   {
     id: "trimup",
@@ -78,7 +79,7 @@ const SERVICES = [
     short: "Puppy Trim",
     icon: "🐶",
     popular: false,
-    desc: "A gentle, patient first trim for pups — short, sweet, and full of treats. Small breeds $40, large breeds $50.",
+    desc: "A gentle, patient first trim for puppies 5 months & under — short, sweet, and full of treats. Small breeds $40, large breeds $50.",
     includes: ["Gentle intro bath", "Light trim", "Nail trim", "Lots of treats & praise"],
     price: { small: 40, medium: 40, large: 50, xl: 50 },
     time: "2 hours",
@@ -138,7 +139,7 @@ const RATING = { average: "5.0", count: "200+" };
 // FAQ — edit these questions & answers to match your salon's policies.
 const FAQS = [
   { q: "How often should my dog be groomed?", a: "Most pups do best every 4–8 weeks depending on their coat. Doodles, poodles, and other curly coats need the shorter end of that range to stay mat-free. We're happy to recommend a schedule for your dog at their first visit." },
-  { q: "How long does a groom take?", a: "A bath & brush usually takes 1–1.5 hours and a full groom 2–3 hours, depending on your pup's size, coat, and how they feel about the blow dryer. We'll text you updates the whole way, and you'll get a message the moment they're ready for pickup." },
+  { q: "How long does a groom take?", a: "A bath usually takes 1–2 hours, a trim-up 2–3 hours, and a full body cut 2¼–3¼ hours, depending on your pup's size, coat, and how they feel about the blow dryer. We'll text you updates the whole way, and you'll get a message the moment they're ready for pickup." },
   { q: "Do you take walk-ins?", a: "Yes — three services are always walk-in, no appointment needed: nail trim or grinding ($15), nails plus ear cleaning ($20), and anal gland expression ($15). Baths and grooms are by appointment so every pup gets our full attention. Book online or give us a call." },
   { q: "My dog is nervous or has never been groomed. Can you help?", a: "Absolutely — gentle handling is our specialty, and nervous pups and rescues are some of our favorite clients. Tell us in the booking notes and we'll take it slow, with lots of breaks and treats. For puppies, our Puppy's First Pamper is the perfect low-stress introduction." },
   { q: "What if my dog's coat is matted?", a: "We'll always do what's kindest for your dog. Light matting can often be worked out with our dematting and extra brushing add-on ($20); heavier coats may need our excessive matting service ($25) or a shorter, comfortable cut. We'll always talk it through with you before we do anything." },
@@ -334,7 +335,7 @@ function Pricing({ onBook }) {
               </ul>
               <div className="price-card-foot">
                 <div>
-                  <span className="price-amount">${svc.price[size]}</span>
+                  <span className="price-amount">{svc.from && <small className="price-from">from </small>}${svc.price[size]}</span>
                   <span className="price-time">⏱ {svc.time}</span>
                 </div>
                 <button className="btn btn-primary btn-sm" onClick={() => onBook(size, svc.id)}>Book</button>

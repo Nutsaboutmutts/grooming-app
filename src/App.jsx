@@ -11,6 +11,7 @@ const SALON = {
   bookingUrl: "https://squareup.com/appointments/book/G2SZR8K8RV3M8",
   tagline: "Where every pup leaves looking pawsitively fabulous",
   phone: "(708) 620-8888",
+  textNumber: "(855) 962-7563",
   email: "hello@nutsaboutmutts.com",
   address: "123 Main Street, Your Town, USA",
   hours: [
@@ -455,7 +456,8 @@ function Faq() {
           ))}
         </div>
         <p className="faq-more">
-          Still wondering something? Call us at <a href={`tel:${SALON.phone.replace(/[^\d+]/g, "")}`}>{SALON.phone}</a> — we love talking dogs.
+          Still wondering something? Call <a href={`tel:${SALON.phone.replace(/[^\d+]/g, "")}`}>{SALON.phone}</a> or
+          text <a href={`sms:${SALON.textNumber.replace(/[^\d+]/g, "")}`}>{SALON.textNumber}</a> — we love talking dogs.
         </p>
       </div>
     </section>
@@ -479,7 +481,8 @@ function BookSquare() {
             🐾 Book Your Appointment
           </button>
           <p className="book-square-alt">
-            Prefer to talk? Call us at <a href={`tel:${SALON.phone.replace(/[^\d+]/g, "")}`}>{SALON.phone}</a>
+            Prefer to talk? Call <a href={`tel:${SALON.phone.replace(/[^\d+]/g, "")}`}>{SALON.phone}</a> or
+            text <a href={`sms:${SALON.textNumber.replace(/[^\d+]/g, "")}`}>{SALON.textNumber}</a>
           </p>
           <p className="booking-cat-note">
             🐱 Booking for a cat? Cat appointments are scheduled by phone.
@@ -737,7 +740,8 @@ function Footer({ onStaff }) {
         <div>
           <h4>Visit Us</h4>
           <p>{SALON.address}</p>
-          <p><a href={`tel:${SALON.phone.replace(/[^\d+]/g, "")}`}>{SALON.phone}</a></p>
+          <p>Call: <a href={`tel:${SALON.phone.replace(/[^\d+]/g, "")}`}>{SALON.phone}</a></p>
+          <p>Text: <a href={`sms:${SALON.textNumber.replace(/[^\d+]/g, "")}`}>{SALON.textNumber}</a></p>
           <p><a href={`mailto:${SALON.email}`}>{SALON.email}</a></p>
         </div>
         <div>

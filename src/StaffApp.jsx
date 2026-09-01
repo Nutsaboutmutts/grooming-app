@@ -200,7 +200,7 @@ function SettingsScreen({ groomers, bathers, messages, defaultPickup, salonName,
 }
 
 // ── STAFF SELECT ───────────────────────────────────────────────────────────
-function StaffSelect({ groomers, bathers, salonName, onSelect, onSettings }) {
+function StaffSelect({ groomers, bathers, salonName, onSelect, onSettings, onExit }) {
   return (
     <div style={S.screen}>
       <div style={S.logoArea}>
@@ -242,6 +242,11 @@ function StaffSelect({ groomers, bathers, salonName, onSelect, onSettings }) {
       <button onClick={onSettings} style={{...S.primaryBtn, background:"#F0EDE8", color:"#666", border:"1px solid #DDD8D0", marginTop:4}}>
         ⚙️ Salon Settings
       </button>
+      {onExit && (
+        <button onClick={onExit} style={{...S.primaryBtn, background:"transparent", color:"#999", border:"none", marginTop:6, fontSize:13}}>
+          ← Back to Website
+        </button>
+      )}
     </div>
   );
 }
@@ -494,8 +499,8 @@ const S = {
   doneCard:   { background:"#fff", borderRadius:24, padding:40, textAlign:"center", border:"1px solid #EAE6E0", width:"100%", maxWidth:340, boxShadow:"0 4px 24px rgba(0,0,0,0.08)" },
 };
 
-// ── APP ROOT ───────────────────────────────────────────────────────────────
-export default function App() {
+// ── STAFF APP ROOT ─────────────────────────────────────────────────────────
+export default function StaffApp({ onExit }) {
   const [screen,    setScreen]    = useState("staff");
   const [staffName, setStaffName] = useState(null);
   const [role,      setRole]      = useState(null);
@@ -515,7 +520,7 @@ export default function App() {
     <SettingsScreen groomers={groomers} bathers={bathers} messages={messages} defaultPickup={defPickup} salonName={salonName}
       onSave={handleSettingsSave} onBack={()=>setScreen("staff")} />
   );
-  if (screen==="staff")   return <StaffSelect groomers={groomers} bathers={bathers} salonName={salonName} onSelect={(n,r)=>{setStaffName(n);setRole(r);setScreen("checkin");}} onSettings={()=>setScreen("settings")} />;
+  if (screen==="staff")   return <StaffSelect groomers={groomers} bathers={bathers} salonName={salonName} onSelect={(n,r)=>{setStaffName(n);setRole(r);setScreen("checkin");}} onSettings={()=>setScreen("settings")} onExit={onExit} />;
   if (screen==="checkin") return <CheckInForm staffName={staffName} role={role} defaultPickup={defPickup} onCheckIn={s=>{setSession(s);setScreen("session");}} onBack={()=>setScreen("staff")} />;
   if (screen==="session") return <SessionScreen session={session} messages={messages} onComplete={()=>{setSession(null);setScreen("checkin");}} onBack={()=>{setSession(null);setScreen("staff");}} />;
 }

@@ -138,7 +138,7 @@
             <div class="nam-addon-grid">
               {% for block in section.blocks %}
                 {% if block.type == 'addon' %}
-                  <div style="position:relative" {{ block.shopify_attributes }}>
+                  <div style="position:relative" {{ block.shopify_attributes }}{% if block.settings.small_medium_only %} data-sm-only="1"{% endif %}>
                     <input type="checkbox" id="nam-addon-{{ block.id }}" data-addon="{{ block.settings.name | strip_html }}" data-price="{{ block.settings.price }}">
                     <label for="nam-addon-{{ block.id }}">
                       <span>{{ block.settings.name }}</span>
@@ -247,6 +247,14 @@
           r.parentElement.querySelector('[data-svc-price]').textContent = '$' + r.dataset[size];
         });
       }
+      root.querySelectorAll('[data-sm-only="1"]').forEach(function (el) {
+        var restricted = size === 'large' || size === 'xl';
+        el.hidden = restricted;
+        if (restricted) {
+          var box = el.querySelector('input');
+          if (box) box.checked = false;
+        }
+      });
       var step1Next = root.querySelector('[data-step="1"] [data-next]');
       var step2Next = root.querySelector('[data-step="2"] [data-next]');
       if (step1Next) step1Next.disabled = !size;
@@ -338,8 +346,9 @@
       "type": "addon",
       "name": "Add-on",
       "settings": [
-        { "type": "text", "id": "name", "label": "Add-on name", "default": "💅 Nail Grind" },
-        { "type": "number", "id": "price", "label": "Price ($)", "default": 12 }
+        { "type": "text", "id": "name", "label": "Add-on name", "default": "💅 Nail Grinding" },
+        { "type": "number", "id": "price", "label": "Price ($)", "default": 15 },
+        { "type": "checkbox", "id": "small_medium_only", "label": "Small–medium dogs only (hidden for large/XL)", "default": false }
       ]
     }
   ],
@@ -358,7 +367,7 @@
         { "type": "addon", "settings": { "name": "🧴 Specialty Shampoo", "price": 8 } },
         { "type": "addon", "settings": { "name": "🪮 Dematting / Extra Brushing", "price": 20 } },
         { "type": "addon", "settings": { "name": "⚠️ Excessive Matting", "price": 25 } },
-        { "type": "addon", "settings": { "name": "🫧 Ozone Spa Tub Soak — NEW!", "price": 15 } },
+        { "type": "addon", "settings": { "name": "🫧 Ozone Spa Tub Soak — NEW! (small–medium dogs)", "price": 25, "small_medium_only": true } },
         { "type": "addon", "settings": { "name": "✨ Spa Package", "price": 20 } },
         { "type": "addon", "settings": { "name": "✨ Spa Package + Nail Grinding", "price": 25 } },
         { "type": "addon", "settings": { "name": "💨 De-Shedding (XSmall–Medium)", "price": 15 } },

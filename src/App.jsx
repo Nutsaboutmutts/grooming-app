@@ -91,7 +91,7 @@ const ADDONS = [
   { id: "specialty",  name: "Specialty Shampoo",             icon: "🧴", price: 8 },
   { id: "dematting",  name: "Dematting / Extra Brushing",    icon: "🪮", price: 20 },
   { id: "xmatting",   name: "Excessive Matting",             icon: "⚠️", price: 25 },
-  { id: "ozone",      name: "Ozone Spa Tub Soak — NEW!",     icon: "🫧", price: 15 },
+  { id: "ozone",      name: "Ozone Spa Tub Soak — NEW! (small–medium dogs)", icon: "🫧", price: 25, smOnly: true },
   { id: "spa",        name: "Spa Package",                   icon: "✨", price: 20 },
   { id: "spaplus",    name: "Spa Package + Nail Grinding",   icon: "✨", price: 25 },
   { id: "deshedsm",   name: "De-Shedding (XSmall–Medium)",   icon: "💨", price: 15 },
@@ -139,7 +139,7 @@ const FAQS = [
   { q: "Do you take walk-ins?", a: "Yes — three services are always walk-in, no appointment needed: nail trim or grinding ($15), nails plus ear cleaning ($20), and anal gland expression ($15). Baths and grooms are by appointment so every pup gets our full attention. Book online or give us a call." },
   { q: "My dog is nervous or has never been groomed. Can you help?", a: "Absolutely — gentle handling is our specialty, and nervous pups and rescues are some of our favorite clients. Tell us in the booking notes and we'll take it slow, with lots of breaks and treats. For puppies, our Puppy's First Pamper is the perfect low-stress introduction." },
   { q: "What if my dog's coat is matted?", a: "We'll always do what's kindest for your dog. Light matting can often be worked out with our dematting and extra brushing add-on ($20); heavier coats may need our excessive matting service ($25) or a shorter, comfortable cut. We'll always talk it through with you before we do anything." },
-  { q: "What's the new spa ozone tub?", a: "The newest addition to our salon! An ozone spa bath is a warm, bubbly, therapeutic soak that deep-cleans all the way down to the skin, soothes itchiness and irritation, and helps with stubborn odor. It's wonderful for pups with allergies, skin issues, or achy joints — and honestly, most dogs just love the massage. Add it to any bath or groom!" },
+  { q: "What's the new spa ozone tub?", a: "The newest addition to our salon! An ozone spa bath is a warm, bubbly, therapeutic soak that deep-cleans all the way down to the skin, soothes itchiness and irritation, and helps with stubborn odor. It's wonderful for pups with allergies, skin issues, or achy joints — and honestly, most dogs just love the massage. Soaks start at $25, and for now the tub fits small to medium-size dogs only. Add it to any bath or groom!" },
   { q: "Do you groom cats?", a: "We do! Short-haired cat baths are $65, long-haired are $80, cat nail trims are $15, and cat shaves are quoted individually. Cat appointments are scheduled by phone — give us a call." },
   { q: "What if my dog has fleas?", a: "We keep our salon completely flea-free for every pup's safety, so we don't offer flea baths. If we spot fleas at check-in or during the groom, we'll pause and send your pup home — no judgment, it happens! Once your dog is flea-free (your vet can recommend a treatment), we'll happily get you rescheduled." },
   { q: "What do I need to bring?", a: "Just your pup on a leash (or in a carrier for the littles) and proof of current rabies vaccination for their first visit. We'll handle the rest — including the good-smelling stuff." },
@@ -558,7 +558,14 @@ function Booking({ preset }) {
                   <button
                     key={s.id}
                     className={`choice-card ${size === s.id ? "selected" : ""}`}
-                    onClick={() => { setSize(s.id); setStep(2); }}
+                    onClick={() => {
+                      setSize(s.id);
+                      setAddons((prev) => prev.filter((id) => {
+                        const a = ADDONS.find((x) => x.id === id);
+                        return !a.smOnly || s.id === "small" || s.id === "medium";
+                      }));
+                      setStep(2);
+                    }}
                   >
                     <span className="choice-icon">{s.icon}</span>
                     <strong>{s.label}</strong>
@@ -595,7 +602,7 @@ function Booking({ preset }) {
             <>
               <h3 className="wizard-q">Any pawsome extras? <small>(optional)</small></h3>
               <div className="addon-select-grid">
-                {ADDONS.map((a) => (
+                {ADDONS.filter((a) => !a.smOnly || size === "small" || size === "medium").map((a) => (
                   <button
                     key={a.id}
                     className={`addon-select ${addons.includes(a.id) ? "selected" : ""}`}
@@ -606,6 +613,9 @@ function Booking({ preset }) {
                   </button>
                 ))}
               </div>
+              {(size === "large" || size === "xl") && (
+                <p className="addon-restricted-note">🫧 Our new ozone spa tub fits small–medium pups only for now — sorry, big guys!</p>
+              )}
               <div className="wizard-nav">
                 <button className="wizard-back" onClick={() => setStep(2)}>← Change service</button>
                 <button className="btn btn-primary" onClick={() => setStep(4)}>

@@ -664,7 +664,9 @@ export default function App() {
       <Awards />
       <HowItWorks />
       <Pricing onBook={bookFromPricing} />
-      <Gallery />
+      {/* When you have pup photos, add them to the GALLERY list up top and
+          put <Gallery /> back on the next line to show the photo section: */}
+      {/* <Gallery /> */}
       <Reviews />
       <Booking preset={preset} />
       <Footer onStaff={() => setView("staff")} />

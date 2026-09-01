@@ -44,7 +44,7 @@ const SERVICES = [
     popular: true,
     desc: "The works! Bath, blow-dry, haircut & style, nail trim, ear cleaning, and a finishing bow or bandana.",
     includes: ["Warm bath & massage", "Blow-dry & brush-out", "Haircut & styling", "Nail trim", "Ear cleaning", "Bow or bandana"],
-    price: { small: 65, medium: 80, large: 95, xl: 115 },
+    price: { small: 85, medium: 125, large: 175, xl: 240 },
     time: "2 – 3 hours",
   },
   {

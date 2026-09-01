@@ -10,7 +10,7 @@ const SALON = {
   name: "We're Nuts About Mutts Inc",
   bookingUrl: "https://squareup.com/appointments/book/G2SZR8K8RV3M8",
   tagline: "Where every pup leaves looking pawsitively fabulous",
-  phone: "(555) 555-5309",
+  phone: "(708) 620-8888",
   email: "hello@nutsaboutmutts.com",
   address: "123 Main Street, Your Town, USA",
   hours: [

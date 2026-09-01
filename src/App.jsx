@@ -22,7 +22,7 @@ const SALON = {
     { name: "Facebook",  url: "https://www.facebook.com/werenutsaboutmutts" },
     { name: "Instagram", url: "https://www.instagram.com/werenutsaboutmutts" },
     { name: "TikTok",    url: "https://www.tiktok.com/@werenutsaboutmutts" },
-    { name: "Amazon",    url: "https://www.amazon.com/werenutsaboutmutts" },
+    { name: "Amazon",    url: "https://www.amazon.com/shop/werenutsaboutmutts" },
   ],
 };
 

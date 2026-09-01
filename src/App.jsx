@@ -37,62 +37,66 @@ const SIZES = [
 // Main services — step 2 of booking. price is per size id above.
 const SERVICES = [
   {
-    id: "fullgroom",
-    name: "The Full Mutt Makeover",
-    short: "Full Groom",
+    id: "fullcut",
+    name: "Full Body Cut",
+    short: "Full Body Cut",
     icon: "✂️",
     popular: true,
-    desc: "The works! Bath, blow-dry, haircut & style, nail trim, ear cleaning, and a finishing bow or bandana.",
-    includes: ["Warm bath & massage", "Blow-dry & brush-out", "Haircut & styling", "Nail trim", "Ear cleaning", "Bow or bandana"],
+    desc: "The Full Mutt Makeover! Bath, blow-dry, full haircut & style, nail trim, ear cleaning, and a finishing bow or bandana.",
+    includes: ["Warm bath & massage", "Blow-dry & brush-out", "Full haircut & styling", "Nail trim", "Ear cleaning", "Bow or bandana"],
     price: { small: 85, medium: 125, large: 175, xl: 240 },
+    time: "2.5 – 3+ hours",
+  },
+  {
+    id: "trimup",
+    name: "Trim-Up",
+    short: "Trim-Up",
+    icon: "🐾",
+    popular: false,
+    desc: "Bath plus a tidy trim — face, feet, and sanitary — without the full haircut. Perfect between full grooms.",
+    includes: ["Warm bath & massage", "Blow-dry & brush-out", "Face, feet & sanitary trim", "Nail trim", "Ear cleaning"],
+    price: { small: 70, medium: 85, large: 115, xl: 145 },
     time: "2 – 3 hours",
   },
   {
-    id: "bathbrush",
-    name: "Splish Splash Bath & Brush",
-    short: "Bath & Brush",
+    id: "bathonly",
+    name: "Bath Only — No Cut",
+    short: "Bath Only",
     icon: "🛁",
     popular: false,
-    desc: "A refreshing scrub for pups who just need to freshen up. Bath, blow-dry, full brush-out, and a spritz of cologne.",
+    desc: "A squeaky-clean bath, blow-dry, and full brush-out — no haircut. Pricing varies by coat; we'll confirm when you book.",
     includes: ["Warm bath & massage", "Blow-dry & brush-out", "Cologne spritz", "Bandana"],
     price: { small: 35, medium: 45, large: 55, xl: 70 },
-    time: "1 – 1.5 hours",
+    time: "1 – 2 hours",
   },
   {
     id: "puppy",
-    name: "Puppy's First Pamper",
-    short: "Puppy Intro",
+    name: "Puppy Trim",
+    short: "Puppy Trim",
     icon: "🐶",
     popular: false,
-    desc: "A gentle, patient introduction to grooming for pups under 6 months. Short, sweet, and full of treats.",
-    includes: ["Gentle intro bath", "Light face & feet trim", "Nail trim", "Lots of treats & praise"],
-    price: { small: 45, medium: 45, large: 55, xl: 55 },
-    time: "45 min – 1 hour",
-  },
-  {
-    id: "tidy",
-    name: "Quick Tidy-Up",
-    short: "Tidy-Up",
-    icon: "🐾",
-    popular: false,
-    desc: "In between grooms? Face, feet, and sanitary trim plus a nail trim to keep your pup looking sharp.",
-    includes: ["Face & feet trim", "Sanitary trim", "Nail trim"],
-    price: { small: 30, medium: 35, large: 40, xl: 45 },
-    time: "30 – 45 min",
+    desc: "A gentle, patient first trim for pups — short, sweet, and full of treats. Small breeds $40, large breeds $50.",
+    includes: ["Gentle intro bath", "Light trim", "Nail trim", "Lots of treats & praise"],
+    price: { small: 40, medium: 40, large: 50, xl: 50 },
+    time: "2 hours",
   },
 ];
 
 // Add-ons — step 3 of booking (optional extras, flat price).
 const ADDONS = [
-  { id: "nailgrind", name: "Nail Grinding",                  icon: "💅", price: 15 },
-  { id: "teeth",     name: "Tooth Brushing",                 icon: "🦷", price: 10 },
-  { id: "specialty", name: "Specialty Shampoo",              icon: "🧴", price: 8 },
-  { id: "spa",       name: "Spa Package",                    icon: "✨", price: 20 },
-  { id: "spaplus",   name: "Spa Package + Nail Grinding",    icon: "✨", price: 25 },
-  { id: "deshedsm",  name: "De-Shedding (XSmall–Medium)",    icon: "💨", price: 15 },
-  { id: "deshedlg",  name: "De-Shedding (Large & Up)",       icon: "💨", price: 25 },
-  { id: "glands",    name: "Anal Gland Expression",          icon: "🧼", price: 15 },
-  { id: "express",   name: "Express Service (book ahead)",   icon: "⚡", price: 20 },
+  { id: "nailgrind",  name: "Nail Grinding",                 icon: "💅", price: 15 },
+  { id: "teeth",      name: "Tooth Brushing",                icon: "🦷", price: 10 },
+  { id: "facial",     name: "Blueberry Facial",              icon: "🫐", price: 8 },
+  { id: "conditioner",name: "Conditioner",                   icon: "💧", price: 8 },
+  { id: "specialty",  name: "Specialty Shampoo",             icon: "🧴", price: 8 },
+  { id: "dematting",  name: "Dematting / Extra Brushing",    icon: "🪮", price: 20 },
+  { id: "xmatting",   name: "Excessive Matting",             icon: "⚠️", price: 25 },
+  { id: "spa",        name: "Spa Package",                   icon: "✨", price: 20 },
+  { id: "spaplus",    name: "Spa Package + Nail Grinding",   icon: "✨", price: 25 },
+  { id: "deshedsm",   name: "De-Shedding (XSmall–Medium)",   icon: "💨", price: 15 },
+  { id: "deshedlg",   name: "De-Shedding (Large/X-Large)",   icon: "💨", price: 25 },
+  { id: "glands",     name: "Anal Gland Expression",         icon: "🧼", price: 15 },
+  { id: "express",    name: "Express Service (book ahead)",  icon: "⚡", price: 20 },
 ];
 
 // Cat services — cats are booked by phone, so these show as a simple list.
@@ -131,9 +135,9 @@ const RATING = { average: "5.0", count: "200+" };
 const FAQS = [
   { q: "How often should my dog be groomed?", a: "Most pups do best every 4–8 weeks depending on their coat. Doodles, poodles, and other curly coats need the shorter end of that range to stay mat-free. We're happy to recommend a schedule for your dog at their first visit." },
   { q: "How long does a groom take?", a: "A bath & brush usually takes 1–1.5 hours and a full groom 2–3 hours, depending on your pup's size, coat, and how they feel about the blow dryer. We'll text you updates the whole way, and you'll get a message the moment they're ready for pickup." },
-  { q: "Do you take walk-ins?", a: "Nail trims are always walk-in — just $15, no appointment needed, stop by during business hours! Baths and grooms are by appointment so every pup gets our full attention. Book online or give us a call." },
+  { q: "Do you take walk-ins?", a: "Yes — three services are always walk-in, no appointment needed: nail trim or grinding ($15), nails plus ear cleaning ($20), and anal gland expression ($15). Baths and grooms are by appointment so every pup gets our full attention. Book online or give us a call." },
   { q: "My dog is nervous or has never been groomed. Can you help?", a: "Absolutely — gentle handling is our specialty, and nervous pups and rescues are some of our favorite clients. Tell us in the booking notes and we'll take it slow, with lots of breaks and treats. For puppies, our Puppy's First Pamper is the perfect low-stress introduction." },
-  { q: "What if my dog's coat is matted?", a: "We'll always do what's kindest for your dog. Light matting can often be brushed out; heavier matting may mean a shorter, comfortable cut and a little extra time, which can add to the price. We'll always talk it through with you before we do anything." },
+  { q: "What if my dog's coat is matted?", a: "We'll always do what's kindest for your dog. Light matting can often be worked out with our dematting and extra brushing add-on ($20); heavier coats may need our excessive matting service ($25) or a shorter, comfortable cut. We'll always talk it through with you before we do anything." },
   { q: "Do you groom cats?", a: "We do! Short-haired cat baths are $65, long-haired are $80, cat nail trims are $15, and cat shaves are quoted individually. Cat appointments are scheduled by phone — give us a call." },
   { q: "What if my dog has fleas?", a: "We keep our salon completely flea-free for every pup's safety, so we don't offer flea baths. If we spot fleas at check-in or during the groom, we'll pause and send your pup home — no judgment, it happens! Once your dog is flea-free (your vet can recommend a treatment), we'll happily get you rescheduled." },
   { q: "What do I need to bring?", a: "Just your pup on a leash (or in a carrier for the littles) and proof of current rabies vaccination for their first visit. We'll handle the rest — including the good-smelling stuff." },
@@ -263,7 +267,7 @@ function Awards() {
 function HowItWorks() {
   const steps = [
     { icon: "📏", title: "1. Pick your pup's size", desc: "Small, medium, large, or extra large — pricing is clear for every size." },
-    { icon: "✂️", title: "2. Choose a service", desc: "Full groom, bath & brush, puppy intro, or a quick tidy-up. Add extras if you like." },
+    { icon: "✂️", title: "2. Choose a service", desc: "Full body cut, trim-up, bath only, or a puppy trim. Add extras if you like." },
     { icon: "📅", title: "3. Book your spot", desc: "Tell us when works and we'll confirm. You'll get text updates during the groom!" },
   ];
   return (
@@ -343,7 +347,7 @@ function Pricing({ onBook }) {
               </div>
             ))}
           </div>
-          <p className="addons-walkin">💅 Walk-in nail trims — just $15, no appointment needed. Stop by anytime!</p>
+          <p className="addons-walkin">💅 Walk-ins welcome, no appointment needed: Nail trim or grinding $15 · Nails + ear cleaning $20 · Anal gland expression $15</p>
           <p className="addons-note">Severely matted coats, special-handling pups, or extra-long coats may add to the price — we'll always confirm with you first.</p>
         </div>
 

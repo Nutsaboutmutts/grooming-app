@@ -99,7 +99,7 @@ const RATING = { average: "5.0", count: "200+" };
 
 // Awards & bragging rights — shown in the awards banner under the hero.
 const AWARDS = [
-  { icon: "🏆", title: "4× Southland's Best", desc: "Voted Southland's Best dog groomer four times" },
+  { icon: "🏆", title: "4× Southlands Best", desc: "Voted Southlands Best dog groomer four times" },
   { icon: "🥇", title: "Best on the South Side", desc: "Chicago's South Side favorite grooming salon" },
   { icon: "💚", title: "Loved by Pup Parents", desc: `${RATING.average} stars from ${RATING.count} happy customers` },
 ];
@@ -162,7 +162,7 @@ function Hero() {
           </button>
         </div>
         <div className="hero-trust">
-          <span className="hero-award">🏆 4× Southland's Best</span>
+          <span className="hero-award">🏆 4× Southlands Best</span>
           <Stars />
           <span><strong>{RATING.average}</strong> from {RATING.count} happy pup parents</span>
         </div>

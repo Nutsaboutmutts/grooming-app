@@ -6,7 +6,7 @@ in Shopify's theme editor — **no code needed after setup**.
 
 | Section | What it does |
 | --- | --- |
-| **NAM Awards** | A slim banner showing off your awards — 4× Southland's Best, Best on Chicago's South Side |
+| **NAM Awards** | A slim banner showing off your awards — 4× Southlands Best, Best on Chicago's South Side |
 | **NAM Booking Steps** | "Booking is simple" — 3 clear steps so customers know exactly what to choose |
 | **NAM Price List** | Customers tap their dog's size (Small / Medium / Large / XL) and every price updates instantly. Includes add-ons list |
 | **NAM Reviews** | 5-star summary plus review cards — paste in your real Google/Facebook reviews |
